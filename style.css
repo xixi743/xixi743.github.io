@@ -1,0 +1,28 @@
+
+body {background-color: #C384FB;}
+
+h1 {
+    color: white;
+    font-family: "Arial Black";
+    font-size: 300%;
+    text-shadow: 0 0 5px #0000FF;
+    text-align: center;
+}
+p  {
+    color: black;
+    font-family: Arial;
+    font-size: 100%;
+    text-align: center;
+}
+img {
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    color: white;
+    font-family: "Arial Black";
+    font: 175%;
+    text-shadow: 0 0 5px #0000FF;
+    text-align: center;
+}
