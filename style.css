@@ -1,11 +1,14 @@
 
-body {background-color: #C384FB;}
+body {
+    background-color: #C384FB;
+    text-align: center
+}
 
 h1 {
     color: white;
     font-family: "Arial Black";
     font-size: 300%;
-    text-shadow: 0 0 5px #0000FF;
+    text-shadow: 0 0 10px #0000FF;
     text-align: center;
 }
 p  {
