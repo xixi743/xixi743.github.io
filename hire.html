@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire Me — Alexis Hale</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sun-orange: #FF7A3C;
+  --sun-amber: #FFB347;
+  --magenta: #C93B6A;
+  --purple-deep: #5B2D8E;
+  --purple-mid: #4A2068;
+  --purple-base: #3B1060;
+  --purple-dark: #2E1550;
+  --cream: #FFF5EC;
+  --sand: #F2C98A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(180deg, var(--purple-base) 0%, var(--purple-dark) 100%);
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3rem;
+  background: rgba(59, 16, 96, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,245,236,0.1);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,245,236,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--cream); }
+
+/* ── LAYOUT ── */
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+}
+.section-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 1rem;
+}
+
+/* ── HERO ── */
+.hire-hero {
+  background: linear-gradient(180deg, #1A0A2E 0%, #3B1060 30%, #7B2070 65%, #5B2D8E 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.hire-hero-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: var(--magenta);
+  opacity: 0.2;
+  filter: blur(120px);
+  top: -150px; left: 50%;
+  transform: translateX(-50%);
+}
+.hire-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 4rem;
+}
+.hire-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.hire-hero-title em { font-style: italic; color: var(--sand); }
+.hire-hero-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.68);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+.hire-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--sun-orange), var(--magenta));
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 1rem 2.2rem;
+  border-radius: 100px;
+  transition: all 0.25s;
+  box-shadow: 0 4px 30px rgba(201,59,106,0.35);
+}
+.hire-hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(201,59,106,0.5);
+}
+
+/* ── SERVICES ── */
+.services-section {
+  background: linear-gradient(180deg, rgba(91, 45, 142, 0.45) 0%, rgba(59, 16, 96, 0.6) 100%);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+.section-title em { font-style: italic; color: var(--sand); }
+
+.service-card {
+  background: rgba(255,245,236,0.06);
+  border: 1px solid rgba(255,122,60,0.28);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.service-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.service-price {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sand);
+  background: rgba(242,201,138,0.1);
+  border: 1px solid rgba(242,201,138,0.25);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.service-desc {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.68);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+.service-includes {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+.service-includes li {
+  font-size: 0.85rem;
+  color: rgba(255,245,236,0.65);
+  padding-left: 1.4rem;
+  position: relative;
+}
+.service-includes li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--sun-orange);
+  font-size: 0.75rem;
+}
+
+/* ── PROCESS ── */
+.process-section { background: linear-gradient(160deg, #5B2D8E 0%, #4A2068 100%); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.process-step {
+  background: rgba(255,245,236,0.06);
+  border: 1px solid rgba(255,245,236,0.12);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.process-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--sand);
+  margin-bottom: 0.5rem;
+}
+.process-step h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.process-step p {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.6);
+  line-height: 1.6;
+}
+
+/* ── ALSO OPEN TO ── */
+.also-section { background: linear-gradient(160deg, #4A2068 0%, #3B1060 100%); }
+.also-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.also-card {
+  background: rgba(255,245,236,0.06);
+  border: 1px solid rgba(138,95,216,0.28);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.also-card h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #B48FEE;
+}
+.also-card p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.6);
+  line-height: 1.65;
+}
+
+/* ── ABOUT ME BLURB ── */
+.about-blurb {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.65);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+/* ── CONTACT CTA ── */
+.contact-section {
+  background: linear-gradient(180deg, #1A0A2E 0%, #3B1060 40%, #7B2070 80%, #5B2D8E 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.contact-glow {
+  position: absolute;
+  width: 350px; height: 350px;
+  border-radius: 50%;
+  background: var(--sun-orange);
+  opacity: 0.15;
+  filter: blur(100px);
+  bottom: -100px; right: -80px;
+}
+.contact-inner { position: relative; z-index: 1; }
+.contact-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.contact-title em { font-style: italic; color: var(--sand); }
+.contact-sub {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.68);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+.contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  padding: 0.6rem 1.3rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255,245,236,0.12);
+  color: rgba(255,245,236,0.6);
+  transition: all 0.2s;
+}
+.social-btn:hover {
+  border-color: rgba(255,245,236,0.35);
+  color: var(--cream);
+  background: rgba(255,245,236,0.05);
+}
+
+.site-footer {
+  background: linear-gradient(180deg, #3B1060 0%, #2E1550 100%);
+  border-top: 1px solid rgba(255,245,236,0.1);
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255,245,236,0.35);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: rgba(255,245,236,0.4);
+}
+
+@media (max-width: 800px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-links { gap: 1.25rem; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .also-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .section { padding: 3rem 1.5rem; }
+  .hire-hero-inner { padding: 3.5rem 1.5rem 3rem; }
+  .process-steps { grid-template-columns: 1fr; }
+  .site-footer { justify-content: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Alexis Hale</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="content.html">Content</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="hire.html" class="active">Hire me</a></li>
+  </ul>
+</nav>
+
+<section class="hire-hero">
+  <div class="hire-hero-glow"></div>
+  <div class="hire-hero-inner">
+    <p class="section-eyebrow">Hire me</p>
+    <h1 class="hire-hero-title">Let's build<br><em>your site.</em></h1>
+    <p class="hire-hero-sub">I'm a software engineer and content creator based in San Diego. I build custom portfolio websites for people who want something that actually looks like them — not a generic template.</p>
+    <a href="mailto:alexis.explored@gmail.com" class="hire-hero-cta">✉ Get in touch</a>
+  </div>
+</section>
+
+<section class="services-section">
+  <div class="section">
+    <p class="section-eyebrow">Services</p>
+    <h2 class="section-title">Portfolio websites<br><em>done right.</em></h2>
+    <p class="about-blurb">After 5 years as a software engineer at Wayfair, I know how to build things that look great and actually work. I bring that same care to personal sites — whether you're a creator, freelancer, small business, or martial arts school that needs a real web presence.</p>
+
+    <div class="service-card">
+      <div class="service-card-header">
+        <h3 class="service-name">Portfolio Website</h3>
+        <span class="service-price">Pricing coming soon</span>
+      </div>
+      <p class="service-desc">A custom-built personal or business site — designed around your brand, your work, and your goals. No WordPress templates, no drag-and-drop limitations. Clean code, fast loading, mobile-friendly, and yours to keep.</p>
+      <ul class="service-includes">
+        <li>Custom design matched to your aesthetic and brand</li>
+        <li>Mobile-responsive, fast-loading static site</li>
+        <li>Project showcase, about page, and contact section</li>
+        <li>Deployed to GitHub Pages, Vercel, or Netlify</li>
+        <li>Source code handed off — you own everything</li>
+        <li>Revisions included during build</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-card-header">
+        <h3 class="service-name">Site Refresh</h3>
+        <span class="service-price">Pricing coming soon</span>
+      </div>
+      <p class="service-desc">Already have a site but it doesn't feel like you? I can redesign and rebuild it — better layout, updated content, modern look. Great for creators and small businesses outgrowing their current setup.</p>
+      <ul class="service-includes">
+        <li>Audit of your current site and goals</li>
+        <li>Redesigned layout and refreshed copy structure</li>
+        <li>Performance and mobile improvements</li>
+        <li>Migration to a modern hosting setup</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="section">
+    <p class="section-eyebrow">How it works</p>
+    <h2 class="section-title">Simple process,<br><em>no surprises.</em></h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h3>Chat</h3>
+        <p>We talk about your goals, style, and what you want the site to do. I'll ask about your work, audience, and any sites you like.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h3>Design</h3>
+        <p>I put together a layout and look based on our conversation. You give feedback, we refine until it feels right.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h3>Build</h3>
+        <p>I code the site, add your content, and set up hosting. You get preview links along the way.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h3>Launch</h3>
+        <p>Site goes live, you get the source code and a quick walkthrough. Ongoing support available if you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="also-section">
+  <div class="section">
+    <p class="section-eyebrow">Also open to</p>
+    <h2 class="section-title">More ways to<br><em>work together.</em></h2>
+    <div class="also-grid">
+      <div class="also-card">
+        <h3>Content partnerships</h3>
+        <p>Brand collabs, sponsored content, and UGC for travel, food, lifestyle, and local San Diego brands. 52K+ views on top videos.</p>
+      </div>
+      <div class="also-card">
+        <h3>Social media for businesses</h3>
+        <p>Filming, editing, and posting for local businesses — including martial arts schools and fitness studios. Case studies coming soon.</p>
+      </div>
+      <div class="also-card">
+        <h3>Freelance engineering</h3>
+        <p>Frontend and full-stack contract work. React, TypeScript, and modern web development for teams that need an extra hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-glow"></div>
+  <div class="section contact-inner">
+    <p class="section-eyebrow">Ready?</p>
+    <h2 class="contact-title">Let's talk<br><em>about your project.</em></h2>
+    <p class="contact-sub">Send me an email with a bit about who you are and what you're looking for. I'll get back to you within a few days.</p>
+    <a href="mailto:alexis.explored@gmail.com" class="hire-hero-cta">✉ alexis.explored@gmail.com</a>
+    <div class="contact-socials">
+      <a href="https://www.tiktok.com/@alexis.explored" target="_blank" class="social-btn">🎵 TikTok</a>
+      <a href="https://www.instagram.com/alexis.explored/" target="_blank" class="social-btn">📷 Instagram</a>
+      <a href="https://www.linkedin.com/in/alexis-hale/" target="_blank" class="social-btn">💼 LinkedIn</a>
+      <a href="https://github.com/xixi743" target="_blank" class="social-btn">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-logo">Alexis Hale</span>
+  <span>Engineer by day, creator by night · San Diego, CA</span>
+  <span>© 2025</span>
+</footer>
+
+</body>
+</html>

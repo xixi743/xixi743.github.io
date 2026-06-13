@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content — Alexis Hale</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sun-orange: #FF7A3C;
+  --sun-amber: #FFB347;
+  --magenta: #C93B6A;
+  --purple-deep: #5B2D8E;
+  --purple-mid: #4A2068;
+  --purple-base: #3B1060;
+  --purple-dark: #2E1550;
+  --cream: #FFF5EC;
+  --sand: #F2C98A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(180deg, var(--purple-base) 0%, var(--purple-dark) 100%);
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3rem;
+  background: rgba(59, 16, 96, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,245,236,0.1);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,245,236,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--cream); }
+
+.section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+}
+.section-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--sand); }
+.section-intro {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.68);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.page-hero {
+  background: linear-gradient(180deg, #1A0A2E 0%, #3B1060 30%, #7B2070 65%, #5B2D8E 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: #8A5FD8;
+  opacity: 0.2;
+  filter: blur(100px);
+  top: -100px; left: -80px;
+}
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 4rem;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--sand);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,245,236,0.5);
+  margin-top: 0.35rem;
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.tech-pill {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(138,95,216,0.12);
+  border: 1px solid rgba(138,95,216,0.3);
+  color: #B48FEE;
+}
+
+.content-body { background: linear-gradient(180deg, rgba(91, 45, 142, 0.45) 0%, rgba(59, 16, 96, 0.6) 100%); }
+.content-body .section { max-width: 1020px; }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.video-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+.video-card-thumb {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(138,95,216,0.2);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.video-card:hover .video-card-thumb {
+  border-color: rgba(138,95,216,0.45);
+  transform: translateY(-2px);
+}
+.video-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-card-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+  transition: background 0.2s;
+}
+.video-card-play-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  padding-left: 3px;
+}
+.video-card:hover .video-card-play { background: rgba(0,0,0,0.35); }
+.video-card-body { padding: 0.85rem 0.15rem 0; }
+.video-card-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+.content-embed-stat {
+  display: inline-block;
+  font-size: 0.68rem;
+  color: rgba(138,95,216,0.85);
+  background: rgba(138,95,216,0.1);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* Video modal */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background: rgba(10, 4, 20, 0.88);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.video-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.video-modal-dialog {
+  position: relative;
+  width: 325px;
+  max-width: 100%;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  color-scheme: light;
+}
+.video-modal-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,245,236,0.2);
+  border-radius: 50%;
+  background: rgba(255,245,236,0.08);
+  color: var(--cream);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.video-modal-close:hover { background: rgba(255,245,236,0.15); }
+.video-modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+  padding-right: 2rem;
+}
+.video-modal-frame iframe {
+  display: block;
+  width: 325px;
+  max-width: 100%;
+  height: 731px;
+  border: 0;
+  margin: 0 auto;
+  color-scheme: light;
+}
+.video-modal-frame iframe[src*="instagram.com"] {
+  height: 580px;
+}
+
+.client-section .section { max-width: 1020px; }
+.content-embed-stat--client {
+  color: rgba(255, 122, 60, 0.9);
+  background: rgba(255, 122, 60, 0.12);
+}
+.client-instagram-link {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #B48FEE;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(138, 95, 216, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+.client-instagram-link:hover {
+  color: var(--cream);
+  border-color: rgba(255, 245, 236, 0.5);
+}
+
+.content-showcase-list { display: flex; flex-direction: column; gap: 0.85rem; }
+.content-showcase {
+  background: rgba(255,245,236,0.06);
+  border: 1px solid rgba(138,95,216,0.25);
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+.content-showcase:hover {
+  border-color: rgba(138,95,216,0.45);
+  background: rgba(138,95,216,0.1);
+}
+.content-showcase--soon {
+  cursor: default;
+  opacity: 0.7;
+}
+.content-showcase--soon:hover {
+  border-color: rgba(138,95,216,0.25);
+  background: rgba(255,245,236,0.06);
+}
+
+.content-thumb {
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: relative;
+}
+.content-thumb::after {
+  content: '▶';
+  position: absolute;
+  bottom: 8px; right: 8px;
+  font-size: 8px;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  width: 18px; height: 18px;
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+}
+.thumb-travel  { background: linear-gradient(160deg, #1A3A5C, #2A6A9C); }
+.thumb-food    { background: linear-gradient(160deg, #5C2A1A, #9C4A2A); }
+.thumb-life    { background: linear-gradient(160deg, #2A1A5C, #6A3A9C); }
+.thumb-client  { background: linear-gradient(160deg, #1A2A1A, #3A5A28); }
+
+.content-showcase-body {
+  flex: 1;
+  padding: 1.1rem 1.35rem 1.1rem 1.35rem;
+  min-width: 0;
+}
+.content-platform {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #B48FEE;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.content-platform-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #B48FEE;
+}
+.content-showcase-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+.content-showcase-sub {
+  font-size: 0.78rem;
+  color: rgba(255,245,236,0.4);
+  line-height: 1.5;
+}
+.content-showcase-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.content-stat {
+  font-size: 0.68rem;
+  color: rgba(138,95,216,0.75);
+  background: rgba(138,95,216,0.1);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+.content-stat--soon {
+  color: rgba(255,245,236,0.3);
+  background: rgba(255,245,236,0.05);
+}
+
+.client-section { background: linear-gradient(160deg, #5B2D8E 0%, #4A2068 100%); }
+.client-intro {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.6);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.niche-section { background: linear-gradient(160deg, #4A2068 0%, #3B1060 100%); }
+.niche-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.niche-card {
+  background: rgba(255,245,236,0.06);
+  border: 1px solid rgba(138,95,216,0.25);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+.niche-card span { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+.niche-card h3 {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #B48FEE;
+  margin-bottom: 0.3rem;
+}
+.niche-card p {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.55);
+  line-height: 1.5;
+}
+
+.page-cta {
+  background: linear-gradient(160deg, #4A2068 0%, #3B1060 100%);
+  text-align: center;
+}
+.page-cta-btn {
+  display: inline-block;
+  border: 1px solid rgba(138,95,216,0.4);
+  color: #B48FEE;
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.page-cta-btn:hover { background: rgba(138,95,216,0.1); }
+
+.site-footer {
+  background: linear-gradient(180deg, #3B1060 0%, #2E1550 100%);
+  border-top: 1px solid rgba(255,245,236,0.1);
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255,245,236,0.35);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: rgba(255,245,236,0.4);
+}
+
+@media (max-width: 900px) {
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .section { padding: 3rem 1.5rem; }
+  .page-hero-inner { padding: 3.5rem 1.5rem 3rem; }
+  .niche-grid { grid-template-columns: 1fr; }
+  .site-footer { justify-content: center; text-align: center; }
+  .video-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  .video-modal-dialog { width: 100%; }
+  .video-modal-frame iframe { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Alexis Hale</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="content.html" class="active">Content</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="hire.html">Hire me</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-inner">
+    <p class="section-eyebrow">Content Creation</p>
+    <h1 class="section-title">I film the life<br><em>I'm living.</em></h1>
+    <p class="section-intro">San Diego-based TikTok creator making videos about travel, local food spots, snorkeling, concerts, and the little moments that make life interesting. Your overly friendly tour guide to wherever I end up next.</p>
+    <div class="tech-pills">
+      <span class="tech-pill">Travel</span>
+      <span class="tech-pill">Food & Drink</span>
+      <span class="tech-pill">San Diego</span>
+      <span class="tech-pill">Snorkeling</span>
+      <span class="tech-pill">Lifestyle</span>
+      <span class="tech-pill">Cooking</span>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">52K+</div>
+        <div class="stat-label">Top video views</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40.7K</div>
+        <div class="stat-label">TikTok likes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50</div>
+        <div class="stat-label">Countries visited</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-body">
+  <div class="section">
+    <p class="section-eyebrow">Featured videos</p>
+    <h2 class="section-title">Top TikToks<br><em>so far.</em></h2>
+
+    <div class="video-grid">
+
+      <button type="button" class="video-card" data-video-id="7600900405928709407" data-video-title="La Jolla Caves Swim & Snorkel" aria-label="Play La Jolla Caves Swim & Snorkel">
+        <div class="video-card-thumb">
+          <img src="images/content/la-jolla-caves.jpg" alt="La Jolla Caves Swim & Snorkel" loading="lazy">
+          <span class="video-card-play" aria-hidden="true"><span class="video-card-play-icon">▶</span></span>
+        </div>
+        <div class="video-card-body">
+          <h3>La Jolla Caves Swim & Snorkel</h3>
+          <span class="content-embed-stat">52.2K views</span>
+        </div>
+      </button>
+
+      <button type="button" class="video-card" data-video-id="7574553252843375903" data-video-title="Free Concerts at The Rady Shell" aria-label="Play Free Concerts at The Rady Shell">
+        <div class="video-card-thumb">
+          <img src="images/content/rady-shell.jpg" alt="Free Concerts at The Rady Shell" loading="lazy">
+          <span class="video-card-play" aria-hidden="true"><span class="video-card-play-icon">▶</span></span>
+        </div>
+        <div class="video-card-body">
+          <h3>Free Concerts at The Rady Shell</h3>
+          <span class="content-embed-stat">42.4K views</span>
+        </div>
+      </button>
+
+      <button type="button" class="video-card" data-video-id="7618282315860462879" data-video-title="Remote Work Meetup — Pacific Beach" aria-label="Play Remote Work Meetup — Pacific Beach">
+        <div class="video-card-thumb">
+          <img src="images/content/remote-work-meetup.jpg" alt="Remote Work Meetup — Pacific Beach" loading="lazy">
+          <span class="video-card-play" aria-hidden="true"><span class="video-card-play-icon">▶</span></span>
+        </div>
+        <div class="video-card-body">
+          <h3>Remote Work Meetup — Pacific Beach</h3>
+          <span class="content-embed-stat">27K views</span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<section class="client-section">
+  <div class="section">
+    <p class="section-eyebrow">Client work</p>
+    <h2 class="section-title">Partnerships &<br><em>brand content.</em></h2>
+    <p class="client-intro">Social media content for <strong>White Dragon Martial Arts</strong> in San Diego — filming classes, editing short-form reels, and posting to their Instagram.</p>
+
+    <div class="video-grid">
+
+      <button type="button" class="video-card"
+        data-platform="instagram"
+        data-reel-id="DZD18OFSe2P"
+        data-video-title="White Dragon Martial Arts"
+        aria-label="Play White Dragon Martial Arts reel">
+        <div class="video-card-thumb">
+          <img src="images/content/white-dragon-1.jpg" alt="White Dragon Martial Arts reel" loading="lazy">
+          <span class="video-card-play" aria-hidden="true"><span class="video-card-play-icon">▶</span></span>
+        </div>
+        <div class="video-card-body">
+          <h3>White Dragon Martial Arts</h3>
+          <span class="content-embed-stat content-embed-stat--client">Instagram · Client reel</span>
+        </div>
+      </button>
+
+      <button type="button" class="video-card"
+        data-platform="instagram"
+        data-reel-id="DY0uBvLhpT1"
+        data-video-title="White Dragon Martial Arts"
+        aria-label="Play White Dragon Martial Arts reel">
+        <div class="video-card-thumb">
+          <img src="images/content/white-dragon-2.jpg" alt="White Dragon Martial Arts reel" loading="lazy">
+          <span class="video-card-play" aria-hidden="true"><span class="video-card-play-icon">▶</span></span>
+        </div>
+        <div class="video-card-body">
+          <h3>White Dragon Martial Arts</h3>
+          <span class="content-embed-stat content-embed-stat--client">Instagram · Client reel</span>
+        </div>
+      </button>
+
+      <button type="button" class="video-card"
+        data-platform="instagram"
+        data-reel-id="DYxH_WBBje0"
+        data-video-title="White Dragon Martial Arts"
+        aria-label="Play White Dragon Martial Arts reel">
+        <div class="video-card-thumb">
+          <img src="images/content/white-dragon-3.jpg" alt="White Dragon Martial Arts reel" loading="lazy">
+          <span class="video-card-play" aria-hidden="true"><span class="video-card-play-icon">▶</span></span>
+        </div>
+        <div class="video-card-body">
+          <h3>White Dragon Martial Arts</h3>
+          <span class="content-embed-stat content-embed-stat--client">Instagram · Client reel</span>
+        </div>
+      </button>
+
+    </div>
+
+    <a href="https://www.instagram.com/whitedragonsandiego/" target="_blank" rel="noopener" class="client-instagram-link">View @whitedragonsandiego on Instagram →</a>
+  </div>
+</section>
+
+<section class="niche-section">
+  <div class="section">
+    <p class="section-eyebrow">What I cover</p>
+    <h2 class="section-title">My<br><em>niches.</em></h2>
+    <div class="niche-grid">
+      <div class="niche-card">
+        <span>🤿</span>
+        <h3>Adventures</h3>
+        <p>Snorkeling, hiking, hidden spots around San Diego and beyond</p>
+      </div>
+      <div class="niche-card">
+        <span>🍜</span>
+        <h3>Food & Drink</h3>
+        <p>Local restaurant finds, viral dishes, honest food reviews</p>
+      </div>
+      <div class="niche-card">
+        <span>✈️</span>
+        <h3>Travel</h3>
+        <p>50 countries — travel guides, tips, and the full trip experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-cta">
+  <div class="section">
+    <a href="https://www.tiktok.com/@alexis.explored" target="_blank" class="page-cta-btn">Watch on TikTok →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-logo">Alexis Hale</span>
+  <span>Engineer by day, creator by night · San Diego, CA</span>
+  <span>© 2025</span>
+</footer>
+
+<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
+  <div class="video-modal-dialog">
+    <button type="button" class="video-modal-close" id="video-modal-close" aria-label="Close video">×</button>
+    <p class="video-modal-title" id="video-modal-title"></p>
+    <div class="video-modal-frame" id="video-modal-frame"></div>
+  </div>
+</div>
+
+<script>
+const videoModal = document.getElementById('video-modal');
+const videoModalFrame = document.getElementById('video-modal-frame');
+const videoModalTitle = document.getElementById('video-modal-title');
+const videoModalClose = document.getElementById('video-modal-close');
+
+function openVideoModal(card) {
+  const title = card.dataset.videoTitle;
+  const platform = card.dataset.platform || 'tiktok';
+
+  videoModalTitle.textContent = title;
+
+  if (platform === 'instagram') {
+    const reelId = card.dataset.reelId;
+    videoModalFrame.innerHTML = `<iframe src="https://www.instagram.com/reel/${reelId}/embed" title="${title}" scrolling="no" allowfullscreen></iframe>`;
+  } else {
+    const videoId = card.dataset.videoId;
+    videoModalFrame.innerHTML = `<iframe src="https://www.tiktok.com/embed/v2/${videoId}" title="${title}" scrolling="no" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  }
+
+  videoModal.hidden = false;
+  videoModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  videoModalClose.focus();
+}
+
+function closeVideoModal() {
+  videoModal.classList.remove('is-open');
+  videoModal.hidden = true;
+  videoModalFrame.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.video-card').forEach(card => {
+  card.addEventListener('click', () => openVideoModal(card));
+});
+
+videoModalClose.addEventListener('click', closeVideoModal);
+videoModal.querySelector('.video-modal-dialog').addEventListener('click', (e) => e.stopPropagation());
+videoModal.addEventListener('click', closeVideoModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && videoModal.classList.contains('is-open')) closeVideoModal();
+});
+</script>
+
+</body>
+</html>

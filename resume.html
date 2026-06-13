@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Alexis Hale</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sun-orange: #FF7A3C;
+  --sun-amber: #FFB347;
+  --magenta: #C93B6A;
+  --purple-deep: #5B2D8E;
+  --purple-mid: #4A2068;
+  --purple-base: #3B1060;
+  --purple-dark: #2E1550;
+  --cream: #FFF5EC;
+  --sand: #F2C98A;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(180deg, var(--purple-base) 0%, var(--purple-dark) 100%);
+  color: var(--cream);
+  min-height: 100vh;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3rem;
+  background: rgba(59, 16, 96, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,245,236,0.1);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,245,236,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--cream); }
+
+.wip-section {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, #1A0A2E 0%, #3B1060 30%, #7B2070 65%, #5B2D8E 100%);
+}
+.wip-inner { max-width: 480px; }
+.section-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 1rem;
+}
+.wip-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.wip-title em { font-style: italic; color: var(--sand); }
+.wip-desc {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.65);
+  line-height: 1.75;
+}
+
+.site-footer {
+  background: linear-gradient(180deg, #3B1060 0%, #2E1550 100%);
+  border-top: 1px solid rgba(255,245,236,0.1);
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: rgba(255,245,236,0.35);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: rgba(255,245,236,0.4);
+}
+
+@media (max-width: 600px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .site-footer { justify-content: center; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Alexis Hale</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="content.html">Content</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="hire.html">Hire me</a></li>
+  </ul>
+</nav>
+
+<section class="wip-section">
+  <div class="wip-inner">
+    <p class="section-eyebrow">Resume</p>
+    <h1 class="wip-title">Work in<br><em>progress.</em></h1>
+    <p class="wip-desc">Full resume coming soon — experience, skills, and download link will live here.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-logo">Alexis Hale</span>
+  <span>Engineer by day, creator by night · San Diego, CA</span>
+  <span>© 2025</span>
+</footer>
+
+</body>
+</html>

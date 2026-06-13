@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexis Hale</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,7 +19,12 @@
   --sand: #F2C98A;
 }
 
+html { scroll-behavior: smooth; scrollbar-color: rgba(255,245,236,0.35) rgba(255,245,236,0.08); scrollbar-width: thin; }
 html, body { height: 100%; width: 100%; }
+html::-webkit-scrollbar { width: 10px; }
+html::-webkit-scrollbar-track { background: rgba(255,245,236,0.06); }
+html::-webkit-scrollbar-thumb { background: rgba(255,245,236,0.3); border-radius: 5px; }
+html::-webkit-scrollbar-thumb:hover { background: rgba(255,245,236,0.5); }
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -96,18 +102,26 @@ nav {
   animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
 }
 
-/* ── SUN ── */
-.sun-wrap {
+/* ── SUN + SCROLL (shared center axis) ── */
+.hero-center-bottom {
   position: absolute;
-  bottom: 26%;
+  bottom: 14%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.sun-wrap {
+  position: relative;
   z-index: 2;
 }
 .sun {
   width: 90px; height: 90px;
   border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, #FFF5AA, #FFD060, #FF9520);
+  background: radial-gradient(circle at 50% 50%, #FFF5AA, #FFD060, #FF9520);
   box-shadow:
     0 0 0 12px rgba(255,190,70,0.2),
     0 0 0 28px rgba(255,160,50,0.12),
@@ -223,8 +237,7 @@ nav {
   nav { padding: 1rem 1.5rem; }
   .nav-links { gap: 1rem; }
   .nav-links a { font-size: 0.7rem; }
-  .social-strip { display: none; }
-  .scroll-hint { bottom: 17%; }
+  .hero-center-bottom { bottom: 12%; }
   .hero-name { font-size: clamp(2.6rem, 13vw, 3.8rem); }
   .tagline { font-size: 0.8rem; }
 }
@@ -237,7 +250,6 @@ nav {
     justify-content: flex-end;
     padding-bottom: 2.5rem;
   }
-  .social-strip { display: none; }
 }
 .eyebrow {
   font-size: 0.7rem;
@@ -254,8 +266,17 @@ nav {
   color: var(--cream);
   line-height: 1.0;
   letter-spacing: -0.01em;
+  text-align: center;
   text-shadow: 0 2px 20px rgba(20,5,40,0.7), 0 0 60px rgba(20,5,40,0.5);
   margin-bottom: 1rem;
+  width: 100%;
+}
+.hero-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
 }
 .hero-name em {
   font-style: italic;
@@ -273,6 +294,44 @@ nav {
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+.hero-socials {
+  display: flex;
+  gap: 0.65rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 0.6s 1.1s ease forwards;
+}
+.hero-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255,245,236,0.3);
+  background: rgba(15, 6, 32, 0.45);
+  backdrop-filter: blur(10px);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.hero-social-link:hover {
+  border-color: rgba(255,245,236,0.55);
+  background: rgba(255,245,236,0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.hero-social-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: currentColor;
 }
 .btn {
   font-family: 'DM Sans', sans-serif;
@@ -309,29 +368,29 @@ nav {
 
 /* ── SCROLL HINT ── */
 .scroll-hint {
-  position: absolute;
-  bottom: 16%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 6;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   opacity: 0;
-  animation: fadeUp 0.6s 1.4s ease forwards;
+  animation: fadeIn 0.6s 1.4s ease forwards;
 }
 .scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(180deg, rgba(255,245,236,0.6), transparent);
+  width: 2px;
+  height: 36px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--cream) 0%, rgba(255,245,236,0.2) 100%);
+  box-shadow: 0 0 8px rgba(255,245,236,0.35);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 .scroll-label {
-  font-size: 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,245,236,0.5);
+  color: var(--cream);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
 }
 
 /* ── PALMS ── */
@@ -344,41 +403,14 @@ nav {
 .palm-right { right: 3%; transform: scaleX(-1); }
 .palm svg { width: 90px; height: 130px; opacity: 0.85; }
 
-/* ── SOCIAL PILLS ── */
-.social-strip {
-  position: absolute;
-  bottom: 15%;
-  right: 2.5rem;
-  z-index: 6;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  opacity: 0;
-  animation: fadeUp 0.6s 1s ease forwards;
-}
-.social-pill {
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,245,236,0.55);
-  text-decoration: none;
-  writing-mode: vertical-rl;
-  transition: color 0.2s;
-}
-.social-pill::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 28px;
-  background: rgba(255,245,236,0.25);
-  margin: 6px auto 0;
-}
-.social-pill:hover { color: var(--cream); }
-
 /* ── KEYFRAMES ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 12px rgba(255,190,70,0.2), 0 0 0 28px rgba(255,160,50,0.12), 0 0 0 52px rgba(255,130,40,0.07), 0 0 60px 30px rgba(255,150,50,0.35); }
@@ -407,9 +439,15 @@ nav {
 
   <div class="horizon-glow"></div>
 
-  <div class="sun-wrap">
-    <div class="sun"></div>
-    <div class="sun-reflection"></div>
+  <div class="hero-center-bottom">
+    <div class="sun-wrap">
+      <div class="sun"></div>
+      <div class="sun-reflection"></div>
+    </div>
+    <div class="scroll-hint">
+      <span class="scroll-label">Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
   </div>
 
   <div class="ocean">
@@ -448,34 +486,40 @@ nav {
   <nav>
     <div class="nav-logo">Alexis Hale</div>
     <ul class="nav-links">
-      <li><a href="#">About</a></li>
-      <li><a href="#">Code</a></li>
-      <li><a href="#">Videos</a></li>
-      <li><a href="#">Writing</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="content.html">Content</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="hire.html">Hire me</a></li>
     </ul>
   </nav>
 
   <div class="hero-content">
-    <p class="eyebrow">Software engineer · Content creator</p>
-    <h1 class="hero-name">Alexis<br><em>Hale</em></h1>
-    <p class="tagline">Engineer by day, creator by night.</p>
-    <div class="hero-cta">
-      <a href="#" class="btn btn-primary">See my work</a>
-      <a href="#" class="btn btn-secondary">Watch my videos</a>
+    <div class="hero-text-block">
+      <p class="eyebrow">Software engineer · Content creator</p>
+      <h1 class="hero-name">Alexis<br><em>Hale</em></h1>
+      <p class="tagline">Engineer by day, creator by night.</p>
+      <div class="hero-cta">
+        <a href="projects.html" class="btn btn-primary">See my work</a>
+        <a href="content.html" class="btn btn-secondary">Watch my videos</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/xixi743" target="_blank" rel="noopener" class="hero-social-link" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.021C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/alexis-hale/" target="_blank" rel="noopener" class="hero-social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.062 2.062 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.tiktok.com/@alexis.explored" target="_blank" rel="noopener" class="hero-social-link" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          TikTok
+        </a>
+      </div>
     </div>
   </div>
 
-  <div class="social-strip">
-    <a class="social-pill" href="https://github.com/xixi743" target="_blank">GitHub</a>
-    <a class="social-pill" href="https://www.linkedin.com/in/alexis-hale/" target="_blank">LinkedIn</a>
-    <a class="social-pill" href="https://www.tiktok.com/@alexis.explored" target="_blank">TikTok</a>
-  </div>
-
-  <div class="scroll-hint">
-    <span class="scroll-label">Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
 <script>
@@ -758,87 +802,28 @@ for (let i = 0; i < 55; i++) {
   color: #B48FEE;
 }
 
-/* Project cards */
-.project-cards { display: flex; flex-direction: column; gap: 10px; }
-.project-card {
-  background: rgba(255,245,236,0.04);
-  border: 1px solid rgba(255,122,60,0.12);
-  border-radius: 10px;
-  padding: 1rem 1.1rem;
+/* Column highlights (landing teaser) */
+.col-panel-highlights {
+  list-style: none;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: border-color 0.2s, background 0.2s;
-  cursor: pointer;
-  text-decoration: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
-.project-card:hover {
-  background: rgba(255,122,60,0.06);
-  border-color: rgba(255,122,60,0.3);
-}
-.project-card-name {
+.col-panel-highlights li {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #FFF5EC;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.45);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.5;
 }
-.project-card-sub {
-  font-size: 0.72rem;
-  color: rgba(255,245,236,0.38);
-  margin-top: 2px;
-  font-family: 'DM Sans', sans-serif;
-}
-.project-card-arrow {
-  font-size: 0.75rem;
-  color: rgba(255,122,60,0.5);
-}
-
-/* Video cards */
-.video-cards { display: flex; flex-direction: column; gap: 10px; }
-.video-card {
-  background: rgba(255,245,236,0.04);
-  border: 1px solid rgba(138,95,216,0.12);
-  border-radius: 10px;
-  padding: 1rem 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transition: border-color 0.2s, background 0.2s;
-  cursor: pointer;
-  text-decoration: none;
-}
-.video-card:hover {
-  background: rgba(138,95,216,0.06);
-  border-color: rgba(138,95,216,0.3);
-}
-.video-thumb {
-  width: 48px; height: 48px;
-  border-radius: 8px;
-  flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-}
-.thumb-travel  { background: linear-gradient(135deg, #1A3A5C, #2A6A9C); }
-.thumb-food    { background: linear-gradient(135deg, #5C2A1A, #9C4A2A); }
-.thumb-life    { background: linear-gradient(135deg, #2A1A5C, #6A3A9C); }
-.video-card-name {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #FFF5EC;
-}
-.video-card-sub {
-  font-size: 0.72rem;
-  color: rgba(255,245,236,0.38);
-  margin-top: 2px;
-  font-family: 'DM Sans', sans-serif;
-}
-.video-views {
-  margin-left: auto;
-  font-size: 0.7rem;
-  color: rgba(138,95,216,0.7);
-  font-family: 'DM Sans', sans-serif;
-  flex-shrink: 0;
+.col-panel-highlights li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: rgba(255,245,236,0.25);
 }
 
 .col-panel-cta {
@@ -864,6 +849,84 @@ for (let i = 0; i < 55; i++) {
 }
 .cta-video:hover { background: rgba(138,95,216,0.1); }
 
+/* ── HIRE TEASER + FOOTER ── */
+.hire-teaser {
+  background: linear-gradient(160deg, #0F0620 0%, #1A0835 50%, #2E1015 100%);
+  color: #FFF5EC;
+  position: relative;
+  overflow: hidden;
+}
+.hire-teaser-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: #C93B6A;
+  opacity: 0.07;
+  filter: blur(100px);
+  top: -100px; right: -80px;
+}
+.hire-teaser-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.hire-teaser-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #FFF5EC;
+  margin-bottom: 1rem;
+}
+.hire-teaser-title em { font-style: italic; color: #F2C98A; }
+.hire-teaser-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.55);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+.hire-teaser-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF7A3C, #C93B6A);
+  color: white;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 0.9rem 2rem;
+  border-radius: 100px;
+  transition: all 0.25s;
+  box-shadow: 0 4px 30px rgba(201,59,106,0.35);
+}
+.hire-teaser-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(201,59,106,0.5);
+}
+
+.site-footer {
+  background: #0A0418;
+  border-top: 1px solid rgba(255,245,236,0.07);
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,245,236,0.2);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-footer .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: rgba(255,245,236,0.4);
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .about-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -874,11 +937,12 @@ for (let i = 0; i < 55; i++) {
 @media (max-width: 600px) {
   .section { padding: 3.5rem 1.5rem; }
   .about-stat-row { flex-wrap: wrap; gap: 1.25rem; }
+  .site-footer { justify-content: center; text-align: center; }
 }
 </style>
 
 <!-- ABOUT -->
-<div class="about-wrap">
+<div class="about-wrap" id="about">
   <div class="section">
     <div class="about-inner">
       <div class="about-left">
@@ -889,7 +953,7 @@ for (let i = 0; i < 55; i++) {
         </div>
         <div class="about-blob"></div>
         <div class="about-fun-facts">
-          <div class="fun-fact"><div class="fun-fact-icon">🗺️</div>54 countries and counting</div>
+          <div class="fun-fact"><div class="fun-fact-icon">🗺️</div>50 countries and counting</div>
           <div class="fun-fact"><div class="fun-fact-icon">📚</div>80+ books a year via audiobook</div>
           <div class="fun-fact"><div class="fun-fact-icon">🥋</div>Martial artist (multiple styles)</div>
           <div class="fun-fact"><div class="fun-fact-icon">🐾</div>Devoted dog mom</div>
@@ -901,10 +965,10 @@ for (let i = 0; i < 55; i++) {
         <p class="section-eyebrow">About me</p>
         <h2 class="about-name">Hi, I'm <em>Alexis</em> —<br>your overly friendly half‑Chinese bestie.</h2>
         <p class="about-bio">
-          By day I'm a <strong>full-stack software engineer</strong> at Wayfair, building frontend experiences in React and TypeScript that millions of people use. By night (and weekends, and honestly any free moment) I'm a <strong>TikTok creator</strong> dragging my camera to restaurants, snorkel spots, concerts, and 54 countries worth of adventures.
+          By day I'm a <strong>full-stack software engineer</strong> at Wayfair, building frontend experiences in React and TypeScript that millions of people use. By night (and weekends, and honestly any free moment) I'm a <strong>TikTok creator</strong> dragging my camera to restaurants, snorkel spots, concerts, and 50 countries worth of adventures.
         </p>
         <p class="about-bio">
-          I grew up half Chinese, which means I have strong opinions about congee and a genuine love for exploring how people live around the world. Growing up at the intersection of cultures gave me a curiosity that no passport can fully satisfy — 54 countries in and I'm still going. When I'm not coding or filming, I'm deep into an audiobook, training martial arts, or out on a walk with my dog — always with headphones in.
+          I grew up half Chinese, which means I have strong opinions about congee and a genuine love for exploring how people live around the world. Growing up at the intersection of cultures gave me a curiosity that no passport can fully satisfy — 50 countries in and I'm still going. When I'm not coding or filming, I'm deep into an audiobook, training martial arts, or out on a walk with my dog — always with headphones in.
         </p>
         <div class="about-tags">
           <span class="about-tag hot">San Diego, CA</span>
@@ -916,7 +980,7 @@ for (let i = 0; i < 55; i++) {
         </div>
         <div class="about-stat-row">
           <div class="about-stat">
-            <div class="about-stat-num">54</div>
+            <div class="about-stat-num">50</div>
             <div class="about-stat-label">Countries visited</div>
           </div>
           <div class="about-stat">
@@ -924,7 +988,7 @@ for (let i = 0; i < 55; i++) {
             <div class="about-stat-label">Books a year</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-num">38.7K</div>
+            <div class="about-stat-num">40.7K</div>
             <div class="about-stat-label">TikTok likes</div>
           </div>
           <div class="about-stat">
@@ -949,88 +1013,41 @@ for (let i = 0; i < 55; i++) {
     <div class="split-columns">
 
       <!-- CODE COLUMN -->
-      <div class="col-panel col-panel-code">
+      <div class="col-panel col-panel-code" id="projects">
         <div class="col-panel-glow glow-code"></div>
         <p class="col-panel-label label-code">Software Engineering</p>
         <h3 class="col-panel-title">I build things<br>for the web.</h3>
-        <p class="col-panel-desc">Full-stack engineer specializing in frontend. I spent 5 years as a software engineer at Wayfair shipping features used by millions — from cart experiences to design systems to A/B tests that moved real revenue. Currently contracting while I explore what's next.</p>
+        <p class="col-panel-desc">Full-stack engineer specializing in frontend. Five years at Wayfair shipping features used by millions — cart experiences, design systems, and A/B tests that moved real revenue.</p>
         <div class="tech-pills">
           <span class="tech-pill pill-code">React</span>
           <span class="tech-pill pill-code">TypeScript</span>
           <span class="tech-pill pill-code">JavaScript</span>
           <span class="tech-pill pill-code">Node.js</span>
-          <span class="tech-pill pill-code">GraphQL</span>
-          <span class="tech-pill pill-code">CSS / SCSS</span>
-          <span class="tech-pill pill-code">Cypress</span>
-          <span class="tech-pill pill-code">Storybook</span>
         </div>
-        <div class="project-cards">
-          <a href="#" class="project-card">
-            <div>
-              <div class="project-card-name">Wayfair Storefront</div>
-              <div class="project-card-sub">Shipping & delivery experience · React · TypeScript</div>
-            </div>
-            <span class="project-card-arrow">↗</span>
-          </a>
-          <a href="#" class="project-card">
-            <div>
-              <div class="project-card-name">Build Your Order</div>
-              <div class="project-card-sub">Warranty & assembly flows · +45% attach rate</div>
-            </div>
-            <span class="project-card-arrow">↗</span>
-          </a>
-          <a href="#" class="project-card">
-            <div>
-              <div class="project-card-name">GitHub</div>
-              <div class="project-card-sub">Personal projects & open source</div>
-            </div>
-            <span class="project-card-arrow">↗</span>
-          </a>
-        </div>
-        <a href="#" class="col-panel-cta cta-code">View all projects</a>
+        <ul class="col-panel-highlights">
+          <li>Storefront & shipping experiences at scale</li>
+          <li>Design systems, Storybook, Cypress testing</li>
+        </ul>
+        <a href="projects.html" class="col-panel-cta cta-code">View all projects →</a>
       </div>
 
       <!-- VIDEO COLUMN -->
-      <div class="col-panel col-panel-video">
+      <div class="col-panel col-panel-video" id="content">
         <div class="col-panel-glow glow-video"></div>
         <p class="col-panel-label label-video">Content Creation</p>
         <h3 class="col-panel-title">I film the life<br>I'm living.</h3>
-        <p class="col-panel-desc">San Diego-based TikTok creator making videos about travel, local food spots, snorkeling, concerts, and the little moments that make life interesting. Your overly friendly tour guide to wherever I end up next.</p>
+        <p class="col-panel-desc">San Diego-based TikTok creator — travel, local food spots, snorkeling, concerts, and the little moments that make life interesting.</p>
         <div class="tech-pills">
           <span class="tech-pill pill-video">Travel</span>
           <span class="tech-pill pill-video">Food & Drink</span>
           <span class="tech-pill pill-video">San Diego</span>
-          <span class="tech-pill pill-video">Snorkeling</span>
           <span class="tech-pill pill-video">Lifestyle</span>
-          <span class="tech-pill pill-video">Cooking</span>
         </div>
-        <div class="video-cards">
-          <a href="#" class="video-card">
-            <div class="video-thumb thumb-travel">🤿</div>
-            <div>
-              <div class="video-card-name">La Jolla Caves Swim & Snorkel</div>
-              <div class="video-card-sub">San Diego adventures</div>
-            </div>
-            <span class="video-views">46.8K views</span>
-          </a>
-          <a href="#" class="video-card">
-            <div class="video-thumb thumb-food">🦀</div>
-            <div>
-              <div class="video-card-name">Viral Crab Rangoon Roll</div>
-              <div class="video-card-sub">San Diego food finds</div>
-            </div>
-            <span class="video-views">7.4K views</span>
-          </a>
-          <a href="#" class="video-card">
-            <div class="video-thumb thumb-life">🌍</div>
-            <div>
-              <div class="video-card-name">What to do in Tromsø, Norway</div>
-              <div class="video-card-sub">54 countries & counting</div>
-            </div>
-            <span class="video-views">Travel</span>
-          </a>
-        </div>
-        <a href="https://www.tiktok.com/@alexis.explored" target="_blank" class="col-panel-cta cta-video">Watch on TikTok</a>
+        <ul class="col-panel-highlights">
+          <li>52K+ views on top San Diego videos</li>
+          <li>50 countries · client partnerships coming soon</li>
+        </ul>
+        <a href="content.html" class="col-panel-cta cta-video">See my content →</a>
       </div>
 
     </div>
@@ -1038,259 +1055,8 @@ for (let i = 0; i < 55; i++) {
 </div>
 
 
-<!-- ═══════════════════════════════════════════
-     WRITING SECTION
-═══════════════════════════════════════════ -->
-<style>
-.writing-wrap {
-  background: #0A0418;
-  color: #FFF5EC;
-}
-.writing-intro {
-  max-width: 560px;
-  margin-bottom: 3rem;
-}
-.writing-intro p {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: rgba(255,245,236,0.55);
-  line-height: 1.75;
-  margin-top: 0.75rem;
-}
-.writing-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 700;
-  color: #FFF5EC;
-  line-height: 1.15;
-}
-.writing-title em { font-style: italic; color: #F2C98A; }
 
-.writing-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-  margin-bottom: 2.5rem;
-}
-.writing-card {
-  background: rgba(255,245,236,0.03);
-  border: 1px solid rgba(255,245,236,0.08);
-  border-radius: 1rem;
-  padding: 1.75rem;
-  text-decoration: none;
-  display: block;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.writing-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #FF7A3C, #C93B6A, #8A5FD8);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.writing-card:hover {
-  border-color: rgba(255,245,236,0.18);
-  background: rgba(255,245,236,0.05);
-  transform: translateY(-3px);
-}
-.writing-card:hover::before { opacity: 1; }
-
-.writing-card-tag {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-  display: inline-block;
-}
-.tag-personal { color: #C93B6A; }
-.tag-tech { color: #FF9A6C; }
-
-.writing-card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #FFF5EC;
-  line-height: 1.3;
-  margin-bottom: 0.6rem;
-}
-.writing-card-desc {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 300;
-  color: rgba(255,245,236,0.45);
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
-}
-.writing-card-meta {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  color: rgba(255,245,236,0.25);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.writing-card-arrow {
-  margin-left: auto;
-  font-size: 0.8rem;
-  color: rgba(255,245,236,0.2);
-  transition: color 0.2s;
-}
-.writing-card:hover .writing-card-arrow { color: #F2C98A; }
-
-.writing-more {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.65rem 1.5rem;
-  border-radius: 100px;
-  border: 1px solid rgba(255,245,236,0.15);
-  color: rgba(255,245,236,0.5);
-  transition: all 0.2s;
-}
-.writing-more:hover {
-  border-color: rgba(255,245,236,0.35);
-  color: #FFF5EC;
-}
-
-/* ── CONTACT ── */
-.contact-wrap {
-  background: linear-gradient(160deg, #0F0620 0%, #1A0835 50%, #2E1015 100%);
-  color: #FFF5EC;
-  position: relative;
-  overflow: hidden;
-}
-.contact-glow-l {
-  position: absolute;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  background: #C93B6A;
-  opacity: 0.07;
-  filter: blur(100px);
-  top: -100px; left: -100px;
-}
-.contact-glow-r {
-  position: absolute;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  background: #FF7A3C;
-  opacity: 0.07;
-  filter: blur(80px);
-  bottom: -80px; right: -80px;
-}
-.contact-inner {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto;
-}
-.contact-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: #FFF5EC;
-  margin-bottom: 1rem;
-}
-.contact-title em { font-style: italic; color: #F2C98A; }
-.contact-subtitle {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
-  color: rgba(255,245,236,0.55);
-  line-height: 1.75;
-  margin-bottom: 2.5rem;
-}
-.contact-email-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #FF7A3C, #C93B6A);
-  color: white;
-  text-decoration: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 1rem 2.2rem;
-  border-radius: 100px;
-  margin-bottom: 3rem;
-  transition: all 0.25s;
-  box-shadow: 0 4px 30px rgba(201,59,106,0.35);
-}
-.contact-email-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(201,59,106,0.5);
-}
-.contact-divider {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,245,236,0.2);
-  margin-bottom: 2rem;
-}
-.contact-socials {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
-}
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  padding: 0.6rem 1.3rem;
-  border-radius: 100px;
-  border: 1px solid rgba(255,245,236,0.12);
-  color: rgba(255,245,236,0.6);
-  transition: all 0.2s;
-}
-.social-btn:hover {
-  border-color: rgba(255,245,236,0.35);
-  color: #FFF5EC;
-  background: rgba(255,245,236,0.05);
-}
-.social-btn-icon { font-size: 14px; }
-
-.contact-footer {
-  border-top: 1px solid rgba(255,245,236,0.07);
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  color: rgba(255,245,236,0.2);
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: rgba(255,245,236,0.4);
-}
-
-@media (max-width: 700px) {
-  .writing-cards { grid-template-columns: 1fr; }
-  .contact-footer { justify-content: center; text-align: center; }
-}
-</style>
-
-<!-- WRITING -->
+<!-- WRITING (hidden for now)
 <div class="writing-wrap">
   <div class="section">
     <div class="writing-intro">
@@ -1328,45 +1094,26 @@ for (let i = 0; i < 55; i++) {
     <a href="https://medium.com/@xixi743" target="_blank" class="writing-more">Read on Medium ↗</a>
   </div>
 </div>
+-->
 
-<!-- CONTACT -->
-<div class="contact-wrap">
-  <div class="contact-glow-l"></div>
-  <div class="contact-glow-r"></div>
+<!-- HIRE TEASER -->
+<section class="hire-teaser" id="hire">
+  <div class="hire-teaser-glow"></div>
   <div class="section">
-    <div class="contact-inner">
-      <p class="section-eyebrow">Get in touch</p>
-      <h2 class="contact-title">Let's make<br><em>something together.</em></h2>
-      <p class="contact-subtitle">Whether it's a collab, a project, a brand deal, or just saying hi — my inbox is open. I'm always down to connect with interesting people doing interesting things.</p>
-      <a href="mailto:alexis.explored@gmail.com" class="contact-email-btn">
-        ✉ alexis.explored@gmail.com
-      </a>
-      <div class="contact-divider">or find me on</div>
-      <div class="contact-socials">
-        <a href="https://www.tiktok.com/@alexis.explored" target="_blank" class="social-btn">
-          <span class="social-btn-icon">🎵</span> TikTok
-        </a>
-        <a href="https://www.instagram.com/alexis.explored/" target="_blank" class="social-btn">
-          <span class="social-btn-icon">📷</span> Instagram
-        </a>
-        <a href="https://www.linkedin.com/in/alexis-hale/" target="_blank" class="social-btn">
-          <span class="social-btn-icon">💼</span> LinkedIn
-        </a>
-        <a href="https://github.com/xixi743" target="_blank" class="social-btn">
-          <span class="social-btn-icon">🐙</span> GitHub
-        </a>
-        <a href="https://medium.com/@xixi743" target="_blank" class="social-btn">
-          <span class="social-btn-icon">✍️</span> Medium
-        </a>
-      </div>
-      <div class="contact-footer">
-        <span class="footer-logo">Alexis Hale</span>
-        <span>Engineer by day, creator by night · San Diego, CA</span>
-        <span>© 2025</span>
-      </div>
+    <div class="hire-teaser-inner">
+      <p class="section-eyebrow">Work with me</p>
+      <h2 class="hire-teaser-title">Let's build<br><em>something together.</em></h2>
+      <p class="hire-teaser-desc">I build portfolio websites for creators and small businesses — and I'm open to collabs, brand deals, and content partnerships.</p>
+      <a href="hire.html" class="hire-teaser-btn">See services & details →</a>
     </div>
   </div>
-</div>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-logo">Alexis Hale</span>
+  <span>Engineer by day, creator by night · San Diego, CA</span>
+  <span>© 2025</span>
+</footer>
 
 </body>
 </html>
