@@ -11,12 +11,7 @@
 
 :root {
   --sun-orange: #FF7A3C;
-  --sun-amber: #FFB347;
   --magenta: #C93B6A;
-  --purple-deep: #5B2D8E;
-  --purple-mid: #4A2068;
-  --purple-base: #3B1060;
-  --purple-dark: #2E1550;
   --cream: #FFF5EC;
   --sand: #F2C98A;
 }
@@ -25,10 +20,12 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: linear-gradient(180deg, var(--purple-base) 0%, var(--purple-dark) 100%);
+  background: linear-gradient(180deg, #1A0A2E 0%, #0F0620 100%);
   color: var(--cream);
   min-height: 100vh;
 }
+
+a { color: inherit; }
 
 nav {
   position: sticky;
@@ -38,7 +35,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 3rem;
-  background: rgba(59, 16, 96, 0.65);
+  background: rgba(15, 6, 32, 0.8);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,245,236,0.1);
 }
@@ -60,16 +57,12 @@ nav {
 }
 .nav-links a:hover, .nav-links a.active { color: var(--cream); }
 
-.wip-section {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(180deg, #1A0A2E 0%, #3B1060 30%, #7B2070 65%, #5B2D8E 100%);
+.section {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
 }
-.wip-inner { max-width: 480px; }
+.section-wide { max-width: 960px; }
 .section-eyebrow {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
@@ -77,23 +70,253 @@ nav {
   color: var(--magenta);
   margin-bottom: 1rem;
 }
-.wip-title {
+.section-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 700;
   line-height: 1.15;
   margin-bottom: 1rem;
 }
-.wip-title em { font-style: italic; color: var(--sand); }
-.wip-desc {
+.section-title em { font-style: italic; color: var(--sand); }
+.section-intro {
   font-size: 0.95rem;
   font-weight: 300;
-  color: rgba(255,245,236,0.65);
-  line-height: 1.75;
+  color: rgba(255,245,236,0.68);
+  line-height: 1.8;
 }
 
+.page-hero {
+  background: linear-gradient(180deg, #1A0A2E 0%, #2E1550 55%, #3B1060 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: var(--sun-orange);
+  opacity: 0.1;
+  filter: blur(100px);
+  top: -100px; right: -80px;
+}
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.resume-photo-frame {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #FF7A3C, #C93B6A, #5B2D8E);
+  padding: 3px;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+}
+.resume-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #2E1550;
+}
+.resume-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.page-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+.page-hero-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 1.75rem;
+}
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.25rem;
+}
+.contact-link {
+  font-size: 0.82rem;
+  color: rgba(255,245,236,0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-link:hover { color: var(--cream); }
+.contact-link--accent {
+  color: #FF9A6C;
+}
+.contact-link--accent:hover { color: var(--sun-orange); }
+
+.resume-body { background: linear-gradient(180deg, #100825 0%, #0F0620 100%); }
+
+.role-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.role-card {
+  background: rgba(255,245,236,0.04);
+  border: 1px solid rgba(255,122,60,0.18);
+  border-radius: 1rem;
+  padding: 1.5rem 1.75rem;
+}
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.role-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.role-company {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #FF9A6C;
+  margin-bottom: 0.85rem;
+}
+.role-dates {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,245,236,0.45);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+.role-team {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.55);
+  font-style: italic;
+  margin-bottom: 0.85rem;
+}
+.role-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.role-bullets li {
+  font-size: 0.86rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.68);
+  line-height: 1.65;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.role-bullets li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--sun-orange);
+}
+
+.skills-section { background: linear-gradient(160deg, #1A0835 0%, #100825 100%); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.skill-group {
+  background: rgba(255,245,236,0.04);
+  border: 1px solid rgba(255,245,236,0.1);
+  border-radius: 1rem;
+  padding: 1.35rem 1.5rem;
+}
+.skill-group h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  color: var(--sand);
+}
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.skill-pill {
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  padding: 4px 11px;
+  border-radius: 100px;
+  background: rgba(255,122,60,0.1);
+  border: 1px solid rgba(255,122,60,0.22);
+  color: #FF9A6C;
+}
+.skill-pill--soft {
+  background: rgba(255,245,236,0.06);
+  border-color: rgba(255,245,236,0.14);
+  color: rgba(255,245,236,0.65);
+}
+
+.edu-cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.edu-card, .cert-card {
+  background: rgba(255,245,236,0.04);
+  border: 1px solid rgba(255,245,236,0.1);
+  border-radius: 1rem;
+  padding: 1.35rem 1.5rem;
+}
+.edu-card h3, .cert-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.edu-item { margin-bottom: 1rem; }
+.edu-item:last-child { margin-bottom: 0; }
+.edu-school {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.edu-degree {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.6);
+  line-height: 1.5;
+}
+.edu-dates {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(255,245,236,0.4);
+  margin-top: 0.25rem;
+}
+.cert-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.cert-list li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.65);
+  line-height: 1.5;
+}
+.cert-list strong { font-weight: 500; color: var(--cream); }
+
 .site-footer {
-  background: linear-gradient(180deg, #3B1060 0%, #2E1550 100%);
+  background: linear-gradient(180deg, #0F0620 0%, #0A0418 100%);
   border-top: 1px solid rgba(255,245,236,0.1);
   padding: 2rem 2.5rem;
   display: flex;
@@ -110,9 +333,11 @@ nav {
   color: rgba(255,245,236,0.4);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   nav { padding: 1.25rem 1.5rem; }
-  .nav-links { gap: 1rem; }
+  .section { padding: 3rem 1.5rem; }
+  .page-hero-inner { padding: 3.5rem 1.5rem 3rem; }
+  .skills-grid, .edu-cert-grid { grid-template-columns: 1fr; }
   .site-footer { justify-content: center; text-align: center; }
 }
 </style>
@@ -130,11 +355,215 @@ nav {
   </ul>
 </nav>
 
-<section class="wip-section">
-  <div class="wip-inner">
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-inner">
+    <div class="resume-photo-frame">
+      <div class="resume-photo-inner">
+        <img src="images/alexis-headshot.png" alt="Alexis Hale" width="148" height="148">
+      </div>
+    </div>
     <p class="section-eyebrow">Resume</p>
-    <h1 class="wip-title">Work in<br><em>progress.</em></h1>
-    <p class="wip-desc">Full resume coming soon — experience, skills, and download link will live here.</p>
+    <h1 class="page-hero-title">Alexis Hale</h1>
+    <p class="page-hero-subtitle">Software Engineer</p>
+    <div class="contact-row">
+      <a href="mailto:alexis.explored@gmail.com" class="contact-link contact-link--accent">alexis.explored@gmail.com</a>
+      <span class="contact-link">San Diego, CA</span>
+      <a href="https://www.linkedin.com/in/alexis-hale/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/xixi743" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="resume-body">
+  <div class="section">
+    <p class="section-eyebrow">Summary</p>
+    <p class="section-intro">Experienced full-stack software engineer with a track record of delivering high-quality, reliable solutions through a collaborative, people-first approach. Skilled in agile methodologies, cross-functional teamwork, and simplifying complex technical concepts for diverse stakeholders. Known for bridging gaps between engineering and business teams to drive product success. Eager to continue growing as an individual contributor or transition into people management on a tech-focused team, where I can lead with empathy and foster innovation.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section section-wide">
+    <p class="section-eyebrow">Experience</p>
+    <h2 class="section-title">Professional<br><em>experience.</em></h2>
+
+    <div class="role-list">
+
+      <article class="role-card">
+        <div class="role-header">
+          <h3 class="role-title">Software Engineer (Contractor)</h3>
+          <span class="role-dates">Nov 2025 – Jul 2026</span>
+        </div>
+        <p class="role-company">Wayfair</p>
+        <p class="role-team">Cart &amp; Checkout Experiences</p>
+        <ul class="role-bullets">
+          <li>Scaled replatformed ecommerce architectures on a high-traffic checkout team.</li>
+          <li>Engineered backend PHP contexts and Unleash feature toggles for secure B2B exclusion paths and controlled rollouts.</li>
+          <li>Developed full-stack schemas, responsive UI components, and Redux integrations for dynamic checkout address selections.</li>
+          <li>Integrated lower-funnel pixel analytics tracking and error boundaries for data integrity and reliability.</li>
+          <li>Expanded Playwright automation coverage across CI/CD pipelines.</li>
+        </ul>
+      </article>
+
+      <article class="role-card">
+        <div class="role-header">
+          <h3 class="role-title">Software Engineer II</h3>
+          <span class="role-dates">Mar 2022 – Aug 2025</span>
+        </div>
+        <p class="role-company">Wayfair</p>
+        <p class="role-team">Shipping &amp; Delivery Services</p>
+        <ul class="role-bullets">
+          <li>Built storefront enhancements used by millions of customers during checkout.</li>
+          <li>Optimized free grill assembly promotion, maintaining an 80% attach rate.</li>
+          <li>Led Build Your Order page revamp, increasing warranty attach rates by 45%.</li>
+          <li>Contributed to a Free White Glove Delivery A/B test with 4.9% conversion lift and $60M projected revenue.</li>
+          <li>Supported team success in delivering $10M+ in profit during 2022.</li>
+        </ul>
+      </article>
+
+      <article class="role-card">
+        <div class="role-header">
+          <h3 class="role-title">Software Engineer I</h3>
+          <span class="role-dates">Aug 2020 – Mar 2022</span>
+        </div>
+        <p class="role-company">Wayfair</p>
+        <p class="role-team">Attached Services</p>
+        <ul class="role-bullets">
+          <li>Owned lower-funnel experiences including dynamic modal content and pricing logic for multi-quantity products and bundled sets.</li>
+          <li>Supported the Build Your Order redesign by implementing adaptive cart drawer logic for mWeb and desktop.</li>
+          <li>Improved service attachment visibility and usability through updates to tooltips, confidence bars, and conditional modal content.</li>
+        </ul>
+      </article>
+
+      <article class="role-card">
+        <div class="role-header">
+          <h3 class="role-title">Software Engineer Intern</h3>
+          <span class="role-dates">Jun 2019 – Aug 2019</span>
+        </div>
+        <p class="role-company">Wayfair</p>
+        <p class="role-team">Gift Cards</p>
+        <ul class="role-bullets">
+          <li>Built an internal tool that saved ~8 hours/week of engineer time.</li>
+          <li>Supported Finance in tracking and resolving discrepancies in digital gift card transactions.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="skills-section">
+  <div class="section section-wide">
+    <p class="section-eyebrow">Skills &amp; technologies</p>
+    <h2 class="section-title">What I bring<br><em>to the table.</em></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-group">
+        <h3>Languages &amp; frameworks</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">PHP</span>
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">Redux</span>
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">HTML5</span>
+          <span class="skill-pill">CSS3</span>
+          <span class="skill-pill">SCSS</span>
+          <span class="skill-pill">Tailwind CSS</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Backend &amp; data</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">GraphQL</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">MySQL</span>
+          <span class="skill-pill">Azure SQL</span>
+          <span class="skill-pill">Supabase</span>
+          <span class="skill-pill">Unleash</span>
+          <span class="skill-pill">Feature flags</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Testing &amp; automation</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Cypress</span>
+          <span class="skill-pill">Playwright</span>
+          <span class="skill-pill">Jest</span>
+          <span class="skill-pill">React Testing Library</span>
+          <span class="skill-pill">Buildkite</span>
+          <span class="skill-pill">CI/CD</span>
+          <span class="skill-pill">E2E testing</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Tools &amp; UI</h3>
+        <div class="skill-pills">
+          <span class="skill-pill">Storybook</span>
+          <span class="skill-pill">Design systems</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">Chrome DevTools</span>
+          <span class="skill-pill">Responsive design</span>
+          <span class="skill-pill">Component libraries</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Leadership &amp; collaboration</h3>
+        <div class="skill-pills">
+          <span class="skill-pill skill-pill--soft">Agile / Scrum</span>
+          <span class="skill-pill skill-pill--soft">Cross-functional teamwork</span>
+          <span class="skill-pill skill-pill--soft">Stakeholder collaboration</span>
+          <span class="skill-pill skill-pill--soft">Technical communication</span>
+          <span class="skill-pill skill-pill--soft">Mentorship</span>
+          <span class="skill-pill skill-pill--soft">Code review</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Product &amp; domain</h3>
+        <div class="skill-pills">
+          <span class="skill-pill skill-pill--soft">Ecommerce</span>
+          <span class="skill-pill skill-pill--soft">Checkout &amp; cart flows</span>
+          <span class="skill-pill skill-pill--soft">A/B testing</span>
+          <span class="skill-pill skill-pill--soft">UX awareness</span>
+          <span class="skill-pill skill-pill--soft">Design thinking</span>
+          <span class="skill-pill skill-pill--soft">Conversion optimization</span>
+          <span class="skill-pill skill-pill--soft">Analytics integration</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section section-wide">
+    <div class="edu-cert-grid">
+
+      <div class="edu-card">
+        <h3>Education</h3>
+        <div class="edu-item">
+          <p class="edu-school">Occidental College</p>
+          <p class="edu-degree">Bachelor's Degree in Computer Science<br>Bachelor's Degree in Cognitive Science</p>
+          <p class="edu-dates">2016 – 2020</p>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <h3>Certifications</h3>
+        <ul class="cert-list">
+          <li><strong>Foundations of Project Management</strong> — Google, 2025</li>
+          <li><strong>Project Initiation: Starting a Successful Project</strong> — Google, 2025</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </section>
 
