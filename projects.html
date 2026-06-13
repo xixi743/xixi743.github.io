@@ -141,6 +141,95 @@ nav {
 }
 .project-showcase:hover { border-color: rgba(255,122,60,0.35); }
 
+.project-showcase-image {
+  border-bottom: 1px solid rgba(255,122,60,0.1);
+  background: #f8f8f8;
+  line-height: 0;
+}
+.project-showcase-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-carousel {
+  position: relative;
+  border-bottom: 1px solid rgba(255,122,60,0.1);
+  background: #f5ebe6;
+}
+.project-carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: #f5ebe6;
+  transition: height 0.35s ease;
+}
+.project-carousel-track {
+  display: flex;
+  align-items: flex-start;
+  will-change: transform;
+  transition: transform 0.35s ease;
+}
+.project-carousel-slide {
+  flex: 0 0 auto;
+  width: 100%;
+  display: block;
+}
+.project-carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.project-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,245,236,0.25);
+  border-radius: 50%;
+  background: rgba(15, 6, 32, 0.65);
+  backdrop-filter: blur(6px);
+  color: var(--cream);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 2;
+  padding: 0 0 2px;
+}
+.project-carousel-btn:hover {
+  background: rgba(15, 6, 32, 0.85);
+  border-color: rgba(255,245,236,0.45);
+}
+.project-carousel-btn--prev { left: 0.65rem; }
+.project-carousel-btn--next { right: 0.65rem; }
+
+.project-image-placeholder {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(145deg, #2a3540 0%, #3d4a45 45%, #4a3d48 100%);
+  border-bottom: 1px solid rgba(138,95,216,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.project-image-placeholder-icon {
+  font-size: 2rem;
+  opacity: 0.35;
+  line-height: 1;
+}
+.project-image-placeholder-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,245,236,0.35);
+}
+
 .project-video-placeholder {
   aspect-ratio: 16 / 9;
   background: linear-gradient(135deg, rgba(255,122,60,0.08), rgba(201,59,106,0.12));
@@ -182,6 +271,27 @@ nav {
   line-height: 1.7;
   margin-bottom: 1rem;
 }
+.project-showcase-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.project-showcase-highlights li {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: rgba(255,245,236,0.6);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+}
+.project-showcase-highlights li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--sun-orange);
+}
 .project-showcase-tech {
   display: flex;
   flex-wrap: wrap;
@@ -195,6 +305,34 @@ nav {
   background: rgba(255,122,60,0.1);
   border: 1px solid rgba(255,122,60,0.22);
   color: #FF9A6C;
+}
+.tech-expand {
+  margin-top: 0.25rem;
+}
+.tech-expand summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(255,245,236,0.5);
+  cursor: pointer;
+  padding: 0.35rem 0;
+  transition: color 0.2s;
+  user-select: none;
+}
+.tech-expand summary::-webkit-details-marker { display: none; }
+.tech-expand summary::after {
+  content: '↓';
+  font-size: 0.65rem;
+  transition: transform 0.2s;
+}
+.tech-expand[open] summary::after { transform: rotate(180deg); }
+.tech-expand summary:hover { color: #FF9A6C; }
+.tech-expand .project-showcase-tech {
+  margin-top: 0.65rem;
+  margin-bottom: 0;
 }
 .project-showcase-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .project-link {
@@ -302,7 +440,7 @@ nav {
   <div class="page-hero-inner">
     <p class="section-eyebrow">Software Engineering</p>
     <h1 class="section-title">I build things<br><em>for the web.</em></h1>
-    <p class="section-intro">Full-stack engineer specializing in frontend. I spent 5 years as a software engineer at Wayfair shipping features used by millions — from cart experiences to design systems to A/B tests that moved real revenue. Currently contracting while I explore what's next.</p>
+    <p class="section-intro">Full-stack engineer specializing in frontend. I spent nearly 6 years at Wayfair shipping features used by millions — cart experiences, design systems, feature flags, and the analytics plumbing product teams used to run experiments. Currently contracting while I explore what's next.</p>
     <div class="tech-pills">
       <span class="tech-pill">React</span>
       <span class="tech-pill">TypeScript</span>
@@ -323,66 +461,147 @@ nav {
 
     <div class="project-showcase-list">
 
-      <article class="project-showcase project-showcase--no-video">
+      <article class="project-showcase">
+        <div class="project-showcase-image">
+          <img src="images/projects/wayfair-cart.png" alt="Wayfair cart page showing product details, delivery options, and order summary" loading="lazy">
+        </div>
         <div class="project-showcase-body">
           <h3 class="project-showcase-title">Wayfair Storefront</h3>
-          <p class="project-showcase-desc">Shipping & delivery experience on Wayfair's main storefront — built in React and TypeScript, used by millions of customers during checkout. Owned frontend flows end-to-end from design handoff through A/B testing and launch.</p>
+          <p class="project-showcase-desc">Nearly 6 years building customer-facing ecommerce experiences at Wayfair — React and TypeScript flows used by millions across the purchase funnel, from browsing through post-checkout.</p>
+          <ul class="project-showcase-highlights">
+            <li>Shipping &amp; delivery experience on the main storefront</li>
+            <li>Cart, minicart, checkout, and receipt page</li>
+            <li>Build Your Order — assembly &amp; haul away attach flows for large appliances (+45% attach rate on key categories)</li>
+            <li>Major contributor to checkout, minicart, and receipt replatforming efforts</li>
+          </ul>
           <div class="project-showcase-tech">
             <span>React</span>
             <span>TypeScript</span>
             <span>GraphQL</span>
-            <span>A/B Testing</span>
+            <span>Redux</span>
+            <span>PHP</span>
+            <span>Storybook</span>
+            <span>Cypress</span>
+            <span>Playwright</span>
+            <span>Jest</span>
+            <span>Pixel tracking</span>
+            <span>Feature flags</span>
+            <span>CI/CD</span>
           </div>
+          <details class="tech-expand">
+            <summary>Show all technologies</summary>
+            <div class="project-showcase-tech">
+              <span>JavaScript</span>
+              <span>Node.js</span>
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>SCSS</span>
+              <span>REST APIs</span>
+              <span>MySQL</span>
+              <span>Azure SQL</span>
+              <span>Unleash</span>
+              <span>Design systems</span>
+              <span>React Testing Library</span>
+              <span>E2E testing</span>
+              <span>Unit testing</span>
+              <span>Buildkite</span>
+              <span>Git</span>
+              <span>Yarn</span>
+              <span>npm</span>
+              <span>Prettier</span>
+              <span>ESLint</span>
+              <span>Datadog</span>
+              <span>Postman</span>
+              <span>Figma</span>
+              <span>Jira</span>
+              <span>Pixel tracking</span>
+              <span>Docker</span>
+              <span>Chrome DevTools</span>
+              <span>Responsive design</span>
+            </div>
+          </details>
         </div>
       </article>
 
       <article class="project-showcase project-showcase--no-video">
         <div class="project-showcase-body">
-          <h3 class="project-showcase-title">Build Your Order</h3>
-          <p class="project-showcase-desc">Warranty and assembly add-on flows integrated into the cart experience. Redesigned the attach flow and shipped experiments that drove a +45% attach rate on key product categories.</p>
-          <div class="project-showcase-tech">
-            <span>React</span>
-            <span>TypeScript</span>
-            <span>Revenue experiments</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-showcase">
-        <div class="project-video-placeholder">
-          <span class="project-video-placeholder-icon">▶</span>
-          <span class="project-video-placeholder-label">Demo video coming soon</span>
-        </div>
-        <div class="project-showcase-body">
           <h3 class="project-showcase-title">This Portfolio Site</h3>
-          <p class="project-showcase-desc">Custom-built personal site with animated hero, scroll sections, and a sunset beach aesthetic. Designed and coded from scratch — the same approach I bring to client portfolio builds.</p>
+          <p class="project-showcase-desc">Custom-built personal site with an animated sunset hero, scroll sections, TikTok and Instagram embeds, and a fully responsive layout. Designed and coded from scratch — no framework, no build step — deployed on GitHub Pages.</p>
           <div class="project-showcase-tech">
-            <span>HTML / CSS</span>
+            <span>HTML5</span>
+            <span>CSS3</span>
             <span>JavaScript</span>
+            <span>SVG</span>
+            <span>CSS Grid</span>
+            <span>Flexbox</span>
+            <span>CSS animations</span>
+            <span>CSS custom properties</span>
+            <span>Responsive design</span>
+            <span>Google Fonts</span>
+            <span>Semantic HTML</span>
+            <span>Git</span>
             <span>GitHub Pages</span>
           </div>
           <div class="project-showcase-links">
-            <a href="https://xixi743.github.io" target="_blank" class="project-link project-link--primary">Live site ↗</a>
-            <a href="https://github.com/xixi743/xixi743.github.io" target="_blank" class="project-link">GitHub</a>
+            <a href="https://xixi743.github.io" target="_blank" rel="noopener" class="project-link project-link--primary">Live site ↗</a>
+            <a href="https://github.com/xixi743/xixi743.github.io" target="_blank" rel="noopener" class="project-link">GitHub</a>
           </div>
         </div>
       </article>
 
       <article class="project-showcase">
-        <div class="project-video-placeholder">
-          <span class="project-video-placeholder-icon">▶</span>
-          <span class="project-video-placeholder-label">Demo video coming soon</span>
+        <div class="project-carousel" data-carousel>
+          <div class="project-carousel-viewport">
+            <div class="project-carousel-track">
+              <div class="project-carousel-slide">
+                <img src="images/projects/reading-nook.png" width="1024" height="699" alt="The Reading Nook shelf view with vertical bookshelf and reading goals" loading="lazy">
+              </div>
+              <div class="project-carousel-slide">
+                <img src="images/projects/reading-nook-gallery.png" width="1024" height="817" alt="The Reading Nook gallery view showing book covers in a grid" loading="lazy">
+              </div>
+            </div>
+            <button type="button" class="project-carousel-btn project-carousel-btn--prev" data-carousel-prev aria-label="Previous screenshot">‹</button>
+            <button type="button" class="project-carousel-btn project-carousel-btn--next" data-carousel-next aria-label="Next screenshot">›</button>
+          </div>
         </div>
         <div class="project-showcase-body">
-          <h3 class="project-showcase-title">Next Project</h3>
-          <p class="project-showcase-desc">Placeholder for your next build — swap in a YouTube embed, live Vercel link, and tech stack when it's ready to ship.</p>
+          <h3 class="project-showcase-title">The Reading Nook</h3>
+          <p class="project-showcase-desc">A personal reading dashboard with a soft, glassmorphic UI — track books on a vertical bookshelf, set annual goals, and visualize your year in reading stats. Built to feel like a quiet corner of the internet, not a spreadsheet.</p>
+          <ul class="project-showcase-highlights">
+            <li>Vertical bookshelf with page-count spines, plus a cover gallery view</li>
+            <li>Reading goals, year filtering, stats charts, and GitHub-style activity heatmaps</li>
+            <li>CSV import from Goodreads &amp; StoryGraph with smart merge on re-import</li>
+            <li>Automatic cover lookup via Open Library &amp; Google Books</li>
+            <li>Custom aesthetic palettes, dark mode, and Supabase auth with row-level security</li>
+          </ul>
           <div class="project-showcase-tech">
             <span>React</span>
             <span>TypeScript</span>
+            <span>Vite</span>
+            <span>Tailwind CSS</span>
+            <span>Supabase</span>
+            <span>PostgreSQL</span>
+            <span>Framer Motion</span>
             <span>Vercel</span>
           </div>
+          <details class="tech-expand">
+            <summary>Show all technologies</summary>
+            <div class="project-showcase-tech">
+              <span>Lucide React</span>
+              <span>PostCSS</span>
+              <span>Supabase Auth</span>
+              <span>Row Level Security</span>
+              <span>Open Library API</span>
+              <span>Google Books API</span>
+              <span>SQL migrations</span>
+              <span>npm</span>
+              <span>GitHub</span>
+              <span>Glassmorphism UI</span>
+            </div>
+          </details>
           <div class="project-showcase-links">
             <span class="project-link project-link--muted">Live site</span>
+            <span class="project-link project-link--muted">Demo</span>
             <span class="project-link project-link--muted">GitHub</span>
           </div>
         </div>
@@ -399,11 +618,11 @@ nav {
     <div class="experience-list">
       <div class="experience-item">
         <h3>Frontend at scale</h3>
-        <p>5+ years building customer-facing features at Wayfair — design systems, Storybook component libraries, Cypress E2E tests, and cross-team collaboration with design and product.</p>
+        <p>Nearly 6 years building customer-facing features at Wayfair — design systems, Storybook component libraries, Cypress E2E tests, and cross-team collaboration with design and product.</p>
       </div>
       <div class="experience-item">
-        <h3>Data-informed shipping</h3>
-        <p>Comfortable running A/B tests, reading experiment results, and iterating based on what actually moves metrics — not just what looks good in a PR.</p>
+        <h3>Experiment-ready engineering</h3>
+        <p>Built feature flags, pixel tracking, and analytics integrations so product teams could run A/B tests and read results — I shipped the plumbing and UI that made experimentation possible, not the experiment strategy itself.</p>
       </div>
       <div class="experience-item">
         <h3>Personal projects & open source</h3>
@@ -424,6 +643,60 @@ nav {
   <span>Engineer by day, creator by night · San Diego, CA</span>
   <span>© 2025</span>
 </footer>
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const viewport = carousel.querySelector('.project-carousel-viewport');
+  const track = carousel.querySelector('.project-carousel-track');
+  const slides = carousel.querySelectorAll('.project-carousel-slide');
+  let index = 0;
+  const total = slides.length;
+
+  function slideHeight(i) {
+    const img = slides[i].querySelector('img');
+    const w = viewport.offsetWidth;
+    if (img?.naturalWidth) return (w * img.naturalHeight) / img.naturalWidth;
+    return (w * Number(img?.height || 817)) / Number(img?.width || 1024);
+  }
+
+  function setViewportHeight(animate = true) {
+    viewport.style.transition = animate ? 'height 0.35s ease' : 'none';
+    viewport.style.height = `${slideHeight(index)}px`;
+    if (!animate) requestAnimationFrame(() => { viewport.style.transition = 'height 0.35s ease'; });
+  }
+
+  function setSlideWidths() {
+    const w = viewport.offsetWidth;
+    slides.forEach(slide => {
+      slide.style.width = `${w}px`;
+      slide.style.flexBasis = `${w}px`;
+    });
+    track.style.width = `${w * total}px`;
+    goTo(index, false);
+  }
+
+  function goTo(i, animate = true) {
+    index = (i + total) % total;
+    track.style.transition = animate ? 'transform 0.35s ease' : 'none';
+    track.style.transform = `translateX(-${index * viewport.offsetWidth}px)`;
+    setViewportHeight(animate);
+    if (!animate) requestAnimationFrame(() => { track.style.transition = 'transform 0.35s ease'; });
+  }
+
+  carousel.querySelector('[data-carousel-prev]')?.addEventListener('click', () => goTo(index - 1));
+  carousel.querySelector('[data-carousel-next]')?.addEventListener('click', () => goTo(index + 1));
+
+  slides.forEach(slide => {
+    const img = slide.querySelector('img');
+    if (!img) return;
+    if (img.complete) setSlideWidths();
+    else img.addEventListener('load', setSlideWidths, { once: true });
+  });
+
+  setSlideWidths();
+  window.addEventListener('resize', setSlideWidths);
+});
+</script>
 
 </body>
 </html>

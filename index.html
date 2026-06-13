@@ -397,6 +397,16 @@ nav {
   z-index: 4;
 }
 .palm-left { left: 3%; }
+.palm-left-extra {
+  left: 14%;
+  bottom: 10%;
+  z-index: 3;
+}
+.palm-left-extra svg {
+  width: 68px;
+  height: 98px;
+  opacity: 0.62;
+}
 .palm-right { right: 3%; transform: scaleX(-1); }
 .palm svg { width: 90px; height: 130px; opacity: 0.85; }
 
@@ -464,6 +474,16 @@ nav {
       <path d="M40 60 Q68 52 85 61 Q69 58 40 60" fill="#3A5A28" stroke="#243D1C" stroke-width="2.5" stroke-linejoin="round" opacity="0.75"/>
       <path d="M40 60 Q27 36 32 14 Q45 44 40 60" fill="#223818" stroke="#152610" stroke-width="2.5" stroke-linejoin="round" opacity="0.7"/>
       <ellipse cx="40" cy="62" rx="7" ry="5" fill="#4A2E08" opacity="0.9"/>
+    </svg>
+  </div>
+  <div class="palm palm-left-extra">
+    <svg viewBox="0 0 90 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M45 130 Q44 88 41 58" stroke="#3A2010" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <path d="M41 58 Q22 32 8 28 Q20 52 41 58" fill="#324A22" stroke="#1E3818" stroke-width="2" stroke-linejoin="round" opacity="0.85"/>
+      <path d="M41 58 Q56 28 68 18 Q55 38 41 58" fill="#2A4A20" stroke="#1E3818" stroke-width="2" stroke-linejoin="round" opacity="0.8"/>
+      <path d="M41 58 Q14 52 2 62 Q13 56 41 58" fill="#3A5A28" stroke="#243D1C" stroke-width="2" stroke-linejoin="round" opacity="0.75"/>
+      <path d="M41 58 Q29 38 34 20 Q43 42 41 58" fill="#223818" stroke="#152610" stroke-width="2" stroke-linejoin="round" opacity="0.65"/>
+      <ellipse cx="41" cy="60" rx="6" ry="4" fill="#4A2E08" opacity="0.85"/>
     </svg>
   </div>
   <div class="palm palm-right">
@@ -950,7 +970,7 @@ for (let i = 0; i < 55; i++) {
         </div>
         <div class="about-blob"></div>
         <div class="about-fun-facts">
-          <div class="fun-fact"><div class="fun-fact-icon">🗺️</div>50 countries and counting</div>
+          <div class="fun-fact"><div class="fun-fact-icon">🗺️</div>55 countries and counting</div>
           <div class="fun-fact"><div class="fun-fact-icon">📚</div>80+ books a year via audiobook</div>
           <div class="fun-fact"><div class="fun-fact-icon">🥋</div>Martial artist (multiple styles)</div>
           <div class="fun-fact"><div class="fun-fact-icon">🐾</div>Devoted dog mom</div>
@@ -962,10 +982,10 @@ for (let i = 0; i < 55; i++) {
         <p class="section-eyebrow">About me</p>
         <h2 class="about-name">Hi, I'm <em>Alexis</em> —<br>your overly friendly half‑Chinese bestie.</h2>
         <p class="about-bio">
-          By day I'm a <strong>full-stack software engineer</strong> at Wayfair, building frontend experiences in React and TypeScript that millions of people use. By night (and weekends, and honestly any free moment) I'm a <strong>TikTok creator</strong> dragging my camera to restaurants, snorkel spots, concerts, and 50 countries worth of adventures.
+          I'm a <strong>full-stack software engineer</strong> with nearly 6 years at Wayfair, where I shipped React and TypeScript experiences used by millions. I'm open to full-time roles, selective freelance work, and independent projects — and I'm building that next chapter now. By night (and weekends, and honestly any free moment) I'm a <strong>TikTok creator</strong> dragging my camera to restaurants, snorkel spots, concerts, and 55 countries worth of adventures.
         </p>
         <p class="about-bio">
-          I grew up half Chinese, which means I have strong opinions about congee and a genuine love for exploring how people live around the world. Growing up at the intersection of cultures gave me a curiosity that no passport can fully satisfy — 50 countries in and I'm still going. When I'm not coding or filming, I'm deep into an audiobook, training martial arts, or out on a walk with my dog — always with headphones in.
+          I grew up half Chinese, which means I have strong opinions about congee and a genuine love for exploring how people live around the world. Growing up at the intersection of cultures gave me a curiosity that no passport can fully satisfy — 55 countries in and I'm still going. When I'm not coding or filming, I'm deep into an audiobook, training martial arts, or out on a walk with my dog — always with headphones in.
         </p>
         <div class="about-tags">
           <span class="about-tag hot">San Diego, CA</span>
@@ -977,7 +997,7 @@ for (let i = 0; i < 55; i++) {
         </div>
         <div class="about-stat-row">
           <div class="about-stat">
-            <div class="about-stat-num">50</div>
+            <div class="about-stat-num">55</div>
             <div class="about-stat-label">Countries visited</div>
           </div>
           <div class="about-stat">
@@ -989,7 +1009,7 @@ for (let i = 0; i < 55; i++) {
             <div class="about-stat-label">TikTok likes</div>
           </div>
           <div class="about-stat">
-            <div class="about-stat-num">5+</div>
+            <div class="about-stat-num">~6</div>
             <div class="about-stat-label">Years at Wayfair</div>
           </div>
         </div>
@@ -1014,7 +1034,7 @@ for (let i = 0; i < 55; i++) {
         <div class="col-panel-glow glow-code"></div>
         <p class="col-panel-label label-code">Software Engineering</p>
         <h3 class="col-panel-title">I build things<br>for the web.</h3>
-        <p class="col-panel-desc">Full-stack engineer specializing in frontend. Five years at Wayfair shipping features used by millions — cart experiences, design systems, and A/B tests that moved real revenue.</p>
+        <p class="col-panel-desc">Full-stack engineer specializing in frontend. Nearly 6 years at Wayfair shipping features used by millions — cart experiences, design systems, and the tooling that let product teams run experiments and track results.</p>
         <div class="tech-pills">
           <span class="tech-pill pill-code">React</span>
           <span class="tech-pill pill-code">TypeScript</span>
@@ -1042,7 +1062,7 @@ for (let i = 0; i < 55; i++) {
         </div>
         <ul class="col-panel-highlights">
           <li>52K+ views on top San Diego videos</li>
-          <li>50 countries · client partnerships coming soon</li>
+          <li>55 countries · client partnerships coming soon</li>
         </ul>
         <a href="content.html" class="col-panel-cta cta-video">See my content →</a>
       </div>
