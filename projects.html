@@ -110,23 +110,10 @@ nav {
   z-index: 1;
   max-width: 640px;
   margin: 0 auto;
-  padding: 5rem 2.5rem 4rem;
+  padding: 5rem 2.5rem 3.25rem;
 }
-
-.tech-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 2.5rem;
-}
-.tech-pill {
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  padding: 4px 12px;
-  border-radius: 100px;
-  background: rgba(255,122,60,0.12);
-  border: 1px solid rgba(255,122,60,0.3);
-  color: #FF9A6C;
+.page-hero-inner .section-intro {
+  margin-bottom: 0;
 }
 
 .projects-body { background: linear-gradient(180deg, #100825 0%, #0F0620 100%); }
@@ -150,6 +137,59 @@ nav {
   width: 100%;
   height: auto;
   display: block;
+}
+[data-media-modal] {
+  cursor: zoom-in;
+}
+[data-media-modal]:hover img {
+  opacity: 0.92;
+}
+.project-showcase-video-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: #0a1628;
+  line-height: 0;
+  border-bottom: 1px solid rgba(255,122,60,0.1);
+}
+.project-showcase-video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;
+}
+.project-showcase-video-embed[data-media-modal]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: zoom-in;
+  background: rgba(10, 22, 40, 0.08);
+  transition: background 0.2s;
+}
+.project-showcase-video-embed[data-media-modal]:hover::after {
+  background: rgba(10, 22, 40, 0.18);
+}
+.project-showcase-video-embed[data-media-modal]::before {
+  content: '⛶';
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 6, 32, 0.65);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,245,236,0.25);
+  color: var(--cream);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
 .project-carousel {
@@ -271,6 +311,11 @@ nav {
   line-height: 1.7;
   margin-bottom: 1rem;
 }
+.project-showcase-desc a {
+  color: #FF9A6C;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .project-showcase-highlights {
   list-style: none;
   display: flex;
@@ -334,6 +379,9 @@ nav {
   margin-top: 0.65rem;
   margin-bottom: 0;
 }
+.tech-expand + .project-showcase-links {
+  margin-top: 1rem;
+}
 .project-showcase-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .project-link {
   font-size: 0.72rem;
@@ -357,6 +405,72 @@ nav {
 .project-link--muted { opacity: 0.45; pointer-events: none; }
 
 .project-showcase--no-video .project-showcase-body { padding-top: 1.5rem; }
+
+.media-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background: rgba(10, 4, 20, 0.88);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.media-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.media-modal-dialog {
+  position: relative;
+  width: min(960px, 100%);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+.media-modal-close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,245,236,0.2);
+  border-radius: 50%;
+  background: rgba(255,245,236,0.08);
+  color: var(--cream);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.media-modal-close:hover { background: rgba(255,245,236,0.15); }
+.media-modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+  padding-right: 2rem;
+}
+.media-modal-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.35rem;
+}
+.media-modal-frame iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 0.35rem;
+}
 
 .experience-section { background: linear-gradient(160deg, #1A0835 0%, #100825 100%); }
 .experience-list { display: flex; flex-direction: column; gap: 1rem; }
@@ -417,7 +531,7 @@ nav {
 @media (max-width: 600px) {
   nav { padding: 1.25rem 1.5rem; }
   .section { padding: 3rem 1.5rem; }
-  .page-hero-inner { padding: 3.5rem 1.5rem 3rem; }
+  .page-hero-inner { padding: 3.5rem 1.5rem 2.5rem; }
   .site-footer { justify-content: center; text-align: center; }
 }
 </style>
@@ -440,17 +554,7 @@ nav {
   <div class="page-hero-inner">
     <p class="section-eyebrow">Software Engineering</p>
     <h1 class="section-title">I build things<br><em>for the web.</em></h1>
-    <p class="section-intro">Full-stack engineer specializing in frontend. I spent nearly 6 years at Wayfair shipping features used by millions — cart experiences, design systems, feature flags, and the analytics plumbing product teams used to run experiments. Currently contracting while I explore what's next.</p>
-    <div class="tech-pills">
-      <span class="tech-pill">React</span>
-      <span class="tech-pill">TypeScript</span>
-      <span class="tech-pill">JavaScript</span>
-      <span class="tech-pill">Node.js</span>
-      <span class="tech-pill">GraphQL</span>
-      <span class="tech-pill">CSS / SCSS</span>
-      <span class="tech-pill">Cypress</span>
-      <span class="tech-pill">Storybook</span>
-    </div>
+    <p class="section-intro">Full-stack engineer specializing in frontend, with nearly 6 years of professional experience building web applications at scale. I've shipped features used by millions—from optimized cart experiences and scalable design systems to the experimentation analytics engines that drive product decisions. Currently wrapping up a contract and open to new opportunities.</p>
   </div>
 </section>
 
@@ -462,7 +566,7 @@ nav {
     <div class="project-showcase-list">
 
       <article class="project-showcase">
-        <div class="project-showcase-image">
+        <div class="project-showcase-image" data-media-modal data-media-type="image" data-media-title="Wayfair Storefront">
           <img src="images/projects/wayfair-cart.png" alt="Wayfair cart page showing product details, delivery options, and order summary" loading="lazy">
         </div>
         <div class="project-showcase-body">
@@ -523,28 +627,51 @@ nav {
         </div>
       </article>
 
-      <article class="project-showcase project-showcase--no-video">
+      <article class="project-showcase">
+        <div class="project-showcase-video-embed" data-media-modal data-media-type="youtube" data-youtube-id="idCnWrTO348" data-media-title="Dive Aunties — site walkthrough" role="button" tabindex="0" aria-label="Expand site walkthrough video">
+          <iframe src="https://www.youtube.com/embed/idCnWrTO348?si=ri-fuMUAbjqCEgwd" title="Dive Aunties site walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         <div class="project-showcase-body">
-          <h3 class="project-showcase-title">This Portfolio Site</h3>
-          <p class="project-showcase-desc">Custom-built personal site with an animated sunset hero, scroll sections, TikTok and Instagram embeds, and a fully responsive layout. Designed and coded from scratch — no framework, no build step — deployed on GitHub Pages.</p>
+          <h3 class="project-showcase-title">Dive Aunties Foundation</h3>
+          <p class="project-showcase-desc">A full redesign of <a href="https://diveaunties.org" target="_blank" rel="noopener">diveaunties.org</a> — migrating a Wix site to a custom Next.js platform for a 501(c) freediving nonprofit. The new site is still in active development; member flows, admin tools, and Stripe billing are shipping incrementally on the <a href="https://dive-aunties.vercel.app/" target="_blank" rel="noopener">in-progress build</a>.</p>
+          <ul class="project-showcase-highlights">
+            <li>Rebuilt from Wix to Next.js 15 — public marketing site, member dashboard, and admin tooling in one codebase</li>
+            <li>Supabase Postgres schema with RLS, role-based access, and isolated medical data storage</li>
+            <li>4-step member onboarding with versioned liability waivers and Zod-validated Server Actions</li>
+            <li>Event management with RSVPs, capacity/waitlist, tier gating, and Google/Outlook/iCal export</li>
+            <li>Admin dashboard for members, events, and news — plus Stripe webhook sync for membership status</li>
+            <li>Responsive marketing site with mobile overlay nav, desktop dropdown nav, and ocean-themed design system</li>
+          </ul>
           <div class="project-showcase-tech">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>SVG</span>
-            <span>CSS Grid</span>
-            <span>Flexbox</span>
-            <span>CSS animations</span>
-            <span>CSS custom properties</span>
-            <span>Responsive design</span>
-            <span>Google Fonts</span>
-            <span>Semantic HTML</span>
-            <span>Git</span>
-            <span>GitHub Pages</span>
+            <span>Next.js 15</span>
+            <span>React 19</span>
+            <span>TypeScript</span>
+            <span>Tailwind CSS v4</span>
+            <span>Supabase</span>
+            <span>PostgreSQL</span>
+            <span>Zod</span>
+            <span>Server Actions</span>
+            <span>App Router</span>
+            <span>Vercel</span>
           </div>
+          <details class="tech-expand">
+            <summary>Show all technologies</summary>
+            <div class="project-showcase-tech">
+              <span>Row Level Security</span>
+              <span>Stripe</span>
+              <span>Supabase Edge Functions</span>
+              <span>Magic Link Auth</span>
+              <span>React Server Components</span>
+              <span>Lucide Icons</span>
+              <span>next/font</span>
+              <span>Responsive Design</span>
+              <span>ICS Calendar Export</span>
+              <span>reCAPTCHA</span>
+            </div>
+          </details>
           <div class="project-showcase-links">
-            <a href="https://xixi743.github.io" target="_blank" rel="noopener" class="project-link project-link--primary">Live site ↗</a>
-            <a href="https://github.com/xixi743/xixi743.github.io" target="_blank" rel="noopener" class="project-link">GitHub</a>
+            <a href="https://dive-aunties.vercel.app/" target="_blank" rel="noopener" class="project-link project-link--primary">Live site (in progress) ↗</a>
+            <a href="https://diveaunties.org" target="_blank" rel="noopener" class="project-link">Original Wix site ↗</a>
           </div>
         </div>
       </article>
@@ -553,10 +680,10 @@ nav {
         <div class="project-carousel" data-carousel>
           <div class="project-carousel-viewport">
             <div class="project-carousel-track">
-              <div class="project-carousel-slide">
+              <div class="project-carousel-slide" data-media-modal data-media-type="image" data-media-title="The Reading Nook — shelf view">
                 <img src="images/projects/reading-nook.png" width="1024" height="699" alt="The Reading Nook shelf view with vertical bookshelf and reading goals" loading="lazy">
               </div>
-              <div class="project-carousel-slide">
+              <div class="project-carousel-slide" data-media-modal data-media-type="image" data-media-title="The Reading Nook — gallery view">
                 <img src="images/projects/reading-nook-gallery.png" width="1024" height="817" alt="The Reading Nook gallery view showing book covers in a grid" loading="lazy">
               </div>
             </div>
@@ -605,6 +732,32 @@ nav {
         </div>
       </article>
 
+      <article class="project-showcase project-showcase--no-video">
+        <div class="project-showcase-body">
+          <h3 class="project-showcase-title">This Portfolio Site</h3>
+          <p class="project-showcase-desc">Custom-built personal site with an animated sunset hero, scroll sections, TikTok and Instagram embeds, and a fully responsive layout. Designed and coded from scratch — no framework, no build step — deployed on GitHub Pages.</p>
+          <div class="project-showcase-tech">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>SVG</span>
+            <span>CSS Grid</span>
+            <span>Flexbox</span>
+            <span>CSS animations</span>
+            <span>CSS custom properties</span>
+            <span>Responsive design</span>
+            <span>Google Fonts</span>
+            <span>Semantic HTML</span>
+            <span>Git</span>
+            <span>GitHub Pages</span>
+          </div>
+          <div class="project-showcase-links">
+            <a href="https://xixi743.github.io" target="_blank" rel="noopener" class="project-link project-link--primary">Live site ↗</a>
+            <a href="https://github.com/xixi743/xixi743.github.io" target="_blank" rel="noopener" class="project-link">GitHub</a>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -642,7 +795,68 @@ nav {
   <span>© 2025</span>
 </footer>
 
+<div class="media-modal" id="media-modal" role="dialog" aria-modal="true" aria-labelledby="media-modal-title" hidden>
+  <div class="media-modal-dialog">
+    <button type="button" class="media-modal-close" id="media-modal-close" aria-label="Close">×</button>
+    <p class="media-modal-title" id="media-modal-title"></p>
+    <div class="media-modal-frame" id="media-modal-frame"></div>
+  </div>
+</div>
+
 <script>
+const mediaModal = document.getElementById('media-modal');
+const mediaModalFrame = document.getElementById('media-modal-frame');
+const mediaModalTitle = document.getElementById('media-modal-title');
+const mediaModalClose = document.getElementById('media-modal-close');
+
+function openMediaModal(el) {
+  const type = el.dataset.mediaType;
+  const title = el.dataset.mediaTitle || '';
+
+  mediaModalTitle.textContent = title;
+
+  if (type === 'youtube') {
+    const id = el.dataset.youtubeId;
+    mediaModalFrame.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" title="${title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  } else {
+    const img = el.querySelector('img');
+    if (!img) return;
+    mediaModalFrame.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+  }
+
+  mediaModal.hidden = false;
+  mediaModal.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  mediaModalClose.focus();
+}
+
+function closeMediaModal() {
+  mediaModal.classList.remove('is-open');
+  mediaModal.hidden = true;
+  mediaModalFrame.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('[data-media-modal]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (e.target.closest('.project-carousel-btn')) return;
+    openMediaModal(el);
+  });
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openMediaModal(el);
+    }
+  });
+});
+
+mediaModalClose.addEventListener('click', closeMediaModal);
+mediaModal.querySelector('.media-modal-dialog').addEventListener('click', (e) => e.stopPropagation());
+mediaModal.addEventListener('click', closeMediaModal);
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mediaModal.classList.contains('is-open')) closeMediaModal();
+});
+
 document.querySelectorAll('[data-carousel]').forEach(carousel => {
   const viewport = carousel.querySelector('.project-carousel-viewport');
   const track = carousel.querySelector('.project-carousel-track');
