@@ -119,16 +119,28 @@ nav {
 .hire-hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.55rem;
   background: linear-gradient(135deg, var(--sun-orange), var(--magenta));
   color: white;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
+  line-height: 1;
   padding: 1rem 2.2rem;
   border-radius: 100px;
   transition: all 0.25s;
   box-shadow: 0 4px 30px rgba(201,59,106,0.35);
+}
+.hire-hero-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.hire-hero-cta-icon svg {
+  width: 1.25em;
+  height: 1.25em;
+  display: block;
 }
 .hire-hero-cta:hover {
   transform: translateY(-2px);
@@ -196,6 +208,11 @@ nav {
   color: rgba(255,245,236,0.65);
   padding-left: 1.4rem;
   position: relative;
+  line-height: 1.65;
+}
+.service-includes li strong {
+  font-weight: 500;
+  color: rgba(255,245,236,0.88);
 }
 .service-includes li::before {
   content: '✓';
@@ -302,8 +319,24 @@ nav {
   font-weight: 300;
   color: rgba(255,245,236,0.68);
   line-height: 1.75;
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto 2rem;
+}
+.contact-ctas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.contact-cta-secondary {
+  background: rgba(255,245,236,0.08);
+  box-shadow: none;
+  border: 1px solid rgba(255,245,236,0.2);
+}
+.contact-cta-secondary:hover {
+  background: rgba(255,245,236,0.12);
+  box-shadow: none;
 }
 .contact-socials {
   display: flex;
@@ -380,9 +413,9 @@ nav {
   <div class="hire-hero-glow"></div>
   <div class="hire-hero-inner">
     <p class="section-eyebrow">Hire me</p>
-    <h1 class="hire-hero-title">Let's build<br><em>your site.</em></h1>
-    <p class="hire-hero-sub">I'm a software engineer and content creator based in San Diego. I build custom portfolio websites for people who want something that actually looks like them — not a generic template.</p>
-    <a href="mailto:alexis.explored@gmail.com" class="hire-hero-cta">✉ Get in touch</a>
+    <h1 class="hire-hero-title">It's 2026.<br><em>No more ugly websites.</em></h1>
+    <p class="hire-hero-sub">We all deserve a polished, premium digital home. I combine professional software engineering with striking design to build custom personal sites that actually look like you.</p>
+    <a href="mailto:alexis.explored@gmail.com" class="hire-hero-cta"><span class="hire-hero-cta-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span> Get in touch</a>
   </div>
 </section>
 
@@ -390,35 +423,37 @@ nav {
   <div class="section">
     <p class="section-eyebrow">Services</p>
     <h2 class="section-title">Portfolio websites<br><em>done right.</em></h2>
-    <p class="about-blurb">After nearly 6 years at Wayfair as a software engineer, I know how to build things that look great and actually work. I bring that same care to personal sites — whether you're a creator, freelancer, small business, or martial arts school that needs a real web presence.</p>
+    <p class="about-blurb">With nearly six years of professional web development experience engineering high-performance applications, I build digital spaces that blend striking aesthetics with production-grade reliability. I bring that same enterprise-level care to personal and local business sites—ensuring your online presence is fast, responsive, and completely tailored to your vision.</p>
 
     <div class="service-card">
       <div class="service-card-header">
-        <h3 class="service-name">Portfolio Website</h3>
-        <span class="service-price">Pricing coming soon</span>
+        <h3 class="service-name">The Express Portfolio</h3>
+        <span class="service-price">Starting at $1,500</span>
       </div>
-      <p class="service-desc">A custom-built personal or business site — designed around your brand, your work, and your goals. No WordPress templates, no drag-and-drop limitations. Clean code, fast loading, mobile-friendly, and yours to keep.</p>
+      <p class="service-desc">Best for individuals needing a beautiful, high-impact landing page or single-page presence on a timeline.</p>
       <ul class="service-includes">
-        <li>Custom design matched to your aesthetic and brand</li>
-        <li>Mobile-responsive, fast-loading static site</li>
-        <li>Project showcase, about page, and contact section</li>
-        <li>Deployed to GitHub Pages, Vercel, or Netlify</li>
-        <li>Source code handed off — you own everything</li>
-        <li>Revisions included during build</li>
+        <li><strong>Streamlined Single-Page Layout:</strong> A beautiful landing page experience featuring cohesive, scrolling sections tailored entirely to your work.</li>
+        <li><strong>Essential Sections:</strong> Includes up to 3 essential content areas within your landing page (such as an Intro/About section, a clean Project Grid or Image Gallery, and a Contact area).</li>
+        <li><strong>Asset &amp; Image Optimization:</strong> Full compression of your photos and media so your site loads instantly on mobile networks.</li>
+        <li><strong>Launch &amp; Deployment:</strong> Full setup of your custom domain, DNS configuration, and launching your site live to the web.</li>
+        <li><strong>Direct Contact Integration:</strong> A secure contact form that routes client messages straight to your primary email inbox.</li>
       </ul>
     </div>
 
     <div class="service-card">
       <div class="service-card-header">
-        <h3 class="service-name">Site Refresh</h3>
-        <span class="service-price">Pricing coming soon</span>
+        <h3 class="service-name">The Custom Personal Brand</h3>
+        <span class="service-price">Starting at $2,500</span>
       </div>
-      <p class="service-desc">Already have a site but it doesn't feel like you? I can redesign and rebuild it — better layout, updated content, modern look. Great for creators and small businesses outgrowing their current setup.</p>
+      <p class="service-desc">Best for creators, consultants, and professionals who want a completely unique, standout digital identity.</p>
       <ul class="service-includes">
-        <li>Audit of your current site and goals</li>
-        <li>Redesigned layout and refreshed copy structure</li>
-        <li>Performance and mobile improvements</li>
-        <li>Migration to a modern hosting setup</li>
+        <li><strong>100% Custom Engineering:</strong> A bespoke frontend architecture built entirely from scratch to match your exact personal aesthetic and goals.</li>
+        <li><strong>Advanced Content Layouts:</strong> Expanded single-page or multi-page structures, allowing for dynamic portfolio case studies or custom filterable galleries.</li>
+        <li><strong>Premium Performance Tuning:</strong> Enterprise-grade code optimization for lightning-fast page speeds, seamless transitions, and fluid UI animations.</li>
+        <li><strong>Search Engine Foundations:</strong> Full on-page SEO setup using semantic HTML structure and custom meta tags to help people find you.</li>
+        <li><strong>Google Search Fast-Track:</strong> Complete Google Search Console setup and manual indexing submission so your new site shows up on Google immediately.</li>
+        <li><strong>Design Protection:</strong> Includes 2 dedicated rounds of design revisions during the build process to ensure everything is perfect.</li>
+        <li><strong>Post-Launch Support:</strong> 30 days of direct technical support after your site goes live for absolute peace of mind.</li>
       </ul>
     </div>
   </div>
@@ -479,9 +514,13 @@ nav {
   <div class="section contact-inner">
     <p class="section-eyebrow">Ready?</p>
     <h2 class="contact-title">Let's talk<br><em>about your project.</em></h2>
-    <p class="contact-sub">Send me an email with a bit about who you are and what you're looking for. I'll get back to you within a few days.</p>
-    <a href="mailto:alexis.explored@gmail.com" class="hire-hero-cta">✉ alexis.explored@gmail.com</a>
+    <p class="contact-sub">Send me an email, give me a call, or reach out through Google. Tell me a bit about who you are and what you're looking for — I'll get back to you within a few days.</p>
+    <div class="contact-ctas">
+      <a href="mailto:alexis.explored@gmail.com" class="hire-hero-cta"><span class="hire-hero-cta-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span> alexis.explored@gmail.com</a>
+      <a href="tel:+16195358438" class="hire-hero-cta contact-cta-secondary"><span class="hire-hero-cta-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span> (619) 535-8438</a>
+    </div>
     <div class="contact-socials">
+      <a href="https://share.google/PytULPa2dQrpkByj4" target="_blank" rel="noopener" class="social-btn">📍 Google Business</a>
       <a href="https://www.tiktok.com/@alexis.explored" target="_blank" class="social-btn">🎵 TikTok</a>
       <a href="https://www.instagram.com/alexis.explored/" target="_blank" class="social-btn">📷 Instagram</a>
       <a href="https://www.linkedin.com/in/alexis-hale/" target="_blank" class="social-btn">💼 LinkedIn</a>
