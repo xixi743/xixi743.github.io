@@ -382,9 +382,23 @@ nav {
   color: rgba(255,245,236,0.4);
 }
 
+@media (max-width: 768px) {
+  nav {
+    justify-content: center;
+    padding: 1rem 0.5rem;
+  }
+  .nav-logo { display: none; }
+  .nav-links {
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 0;
+  }
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+  }
+}
 @media (max-width: 800px) {
-  nav { padding: 1.25rem 1.5rem; }
-  .nav-links { gap: 1.25rem; }
   .process-steps { grid-template-columns: repeat(2, 1fr); }
   .also-grid { grid-template-columns: 1fr; }
 }
@@ -532,7 +546,7 @@ nav {
 <footer class="site-footer">
   <span class="footer-logo">Alexis Hale</span>
   <span>Engineer by day, creator by night · San Diego, CA</span>
-  <span>© 2025</span>
+  <span>© 2026</span>
 </footer>
 
 </body>

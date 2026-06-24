@@ -226,6 +226,24 @@ nav {
   animation: fadeUp 0.8s 0.5s cubic-bezier(0.22,1,0.36,1) forwards;
 }
 
+/* Mobile nav: hide logo, spread links evenly */
+@media (max-width: 768px) {
+  nav {
+    justify-content: center;
+    padding: 1rem 0.5rem;
+  }
+  .nav-logo { display: none; }
+  .nav-links {
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 0;
+  }
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+  }
+}
+
 /* Narrow phones (≤600px): drop a touch lower into the pink zone, not the orange */
 @media (max-width: 600px) {
   .hero-content {
@@ -234,9 +252,8 @@ nav {
     justify-content: flex-end;
     padding-bottom: 2rem;
   }
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { gap: 1rem; }
-  .nav-links a { font-size: 0.7rem; }
+  nav { padding: 1rem 0.5rem; }
+  .nav-links a { font-size: 0.62rem; }
   .hero-center-bottom { bottom: 12%; }
   .hero-name { font-size: clamp(2.6rem, 13vw, 3.8rem); }
   .tagline { font-size: 0.8rem; }
@@ -688,28 +705,6 @@ for (let i = 0; i < 55; i++) {
   color: rgba(255,245,236,0.6);
 }
 .about-tag.hot { border-color: rgba(201,59,106,0.5); color: #F2A0B8; }
-.about-stat-row {
-  display: flex;
-  gap: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,245,236,0.08);
-}
-.about-stat {}
-.about-stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #F2C98A;
-  line-height: 1;
-}
-.about-stat-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,245,236,0.4);
-  margin-top: 4px;
-}
 
 /* ── SPLIT SECTION ── */
 .split-wrap {
@@ -948,12 +943,30 @@ for (let i = 0; i < 55; i++) {
 @media (max-width: 900px) {
   .about-inner { grid-template-columns: 1fr; gap: 3rem; }
   .about-left { max-width: 280px; margin: 0 auto; }
+  .about-fun-facts { display: none; }
+  .about-tags {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .about-tag {
+    text-align: center;
+    font-size: 0.68rem;
+    padding: 0.5rem 0.65rem;
+    letter-spacing: 0.05em;
+  }
   .split-columns { grid-template-columns: 1fr; }
-  .about-stat-row { gap: 1.5rem; }
 }
 @media (max-width: 600px) {
+  .about-tags {
+    gap: 0.45rem;
+  }
+  .about-tag {
+    font-size: 0.64rem;
+    padding: 0.45rem 0.5rem;
+  }
   .section { padding: 3.5rem 1.5rem; }
-  .about-stat-row { flex-wrap: wrap; gap: 1.25rem; }
   .site-footer { justify-content: center; text-align: center; }
 }
 </style>
@@ -974,7 +987,6 @@ for (let i = 0; i < 55; i++) {
           <div class="fun-fact"><div class="fun-fact-icon">📚</div>80+ books a year via audiobook</div>
           <div class="fun-fact"><div class="fun-fact-icon">🥋</div>Martial artist (multiple styles)</div>
           <div class="fun-fact"><div class="fun-fact-icon">🐾</div>Devoted dog mom</div>
-          <div class="fun-fact"><div class="fun-fact-icon">🤿</div>Snorkeling the La Jolla Cove</div>
         </div>
       </div>
 
@@ -990,28 +1002,8 @@ for (let i = 0; i < 55; i++) {
         <div class="about-tags">
           <span class="about-tag hot">San Diego, CA</span>
           <span class="about-tag">Full-Stack Engineer</span>
-          <span class="about-tag">TikTok Creator</span>
+          <span class="about-tag">Social Media Producer</span>
           <span class="about-tag hot">@alexis.explored</span>
-          <span class="about-tag">React · TypeScript</span>
-          <span class="about-tag">Travel · Food · Life</span>
-        </div>
-        <div class="about-stat-row">
-          <div class="about-stat">
-            <div class="about-stat-num">55</div>
-            <div class="about-stat-label">Countries visited</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">80+</div>
-            <div class="about-stat-label">Books a year</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">40.7K</div>
-            <div class="about-stat-label">TikTok likes</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">~6</div>
-            <div class="about-stat-label">Years at Wayfair</div>
-          </div>
         </div>
       </div>
     </div>
@@ -1129,7 +1121,7 @@ for (let i = 0; i < 55; i++) {
 <footer class="site-footer">
   <span class="footer-logo">Alexis Hale</span>
   <span>Engineer by day, creator by night · San Diego, CA</span>
-  <span>© 2025</span>
+  <span>© 2026</span>
 </footer>
 
 </body>
